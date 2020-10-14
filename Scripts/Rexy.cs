@@ -7,11 +7,14 @@ public class Rexy : KinematicBody2D {
     [Export] public float JumpVelocity = 300f;
     [Export] public float HorizontalSpeed = 100f;
     [Export] public float CoyoteTime = 0.1f;
-    public AnimatedSprite Anim;
+    public AnimationTree Move;
+    public AnimationTree Facing;
     public Vector2 Velocity = new Vector2();
     public override void _Ready() {
-        Anim = GetNode<AnimatedSprite>("Anim");
-        Anim.Playing = true;
+        Move = GetNode<AnimationTree>("Anim/Move");
+        Facing = GetNode<AnimationTree>("Anim/Facing");
+        Move.Active = true;
+        Facing.Active = true;
     }
 
     public bool IsOnGround => !Jumped && timeSinceLeftFloor <= CoyoteTime;
@@ -35,6 +38,25 @@ public class Rexy : KinematicBody2D {
             timeSinceLeftFloor += delta;
         }
     }
+
+    private void RefreshAnimationConditions() {
+        // Running Horizontally
+        int x = GetXDirection();
+        bool running_right = x > 0;
+        bool running_left = x < 0;
+        bool running = running_left || running_right;
+        Facing.Set("parameters/conditions/right", running_right);
+        Facing.Set("parameters/conditions/left", running_left);
+        Move.Set("parameters/conditions/running", running);
+        Move.Set("parameters/conditions/not-running", !running);
+        // On Ground
+        Move.Set("parameters/conditions/grounded", IsOnGround);
+        Move.Set("parameters/conditions/airborn", !IsOnGround);
+        // Jump / Fall
+        bool moving_up = Velocity.y > 0;
+        Move.Set("parameters/airborn/conditions/up", moving_up);
+        Move.Set("parameters/airborn/conditions/down", !moving_up);
+    }
     public override void _PhysicsProcess(float delta) {
         RefreshPhysicsState(delta);
         Velocity.x = HorizontalSpeed * GetXDirection();
@@ -50,5 +72,6 @@ public class Rexy : KinematicBody2D {
             Velocity += delta * VerticalAcceleration * Vector2.Down;
         }
         Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up);
+        RefreshAnimationConditions();
     }
 }
