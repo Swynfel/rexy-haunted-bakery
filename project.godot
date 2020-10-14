@@ -63,3 +63,4 @@ jump={
 [rendering]
 
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.262745, 0.113725, 0.380392, 1 )

@@ -70,6 +70,9 @@ public class Rexy : KinematicBody2D {
             Jumped = false;
         } else {
             Velocity += delta * VerticalAcceleration * Vector2.Down;
+            if (Velocity.y > 0) {
+                Jumped = false;
+            }
         }
         Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up);
         RefreshAnimationConditions();

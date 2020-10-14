@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public class TestLevel : Node2D {
+public class TestLevel : Node {
     public override void _Ready() {
         GD.Print("Hello Rexy!");
     }
