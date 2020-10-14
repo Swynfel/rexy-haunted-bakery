@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Level/TestLevel.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=2]
 [ext_resource path="res://Nodes/Rexy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Shaders/shadow_outline.shader" type="Shader" id=4]
+[ext_resource path="res://Nodes/Baguette.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 4 )
@@ -122,3 +123,10 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Rexy" parent="Viewport/TestLevel" instance=ExtResource( 3 )]
 position = Vector2( 128.441, 82.3748 )
+Push = 2.0
+
+[node name="Baguette" parent="Viewport/TestLevel" instance=ExtResource( 5 )]
+position = Vector2( 132.747, 114.808 )
+
+[node name="Baguette2" parent="Viewport/TestLevel" instance=ExtResource( 5 )]
+position = Vector2( 183.471, 72.7603 )

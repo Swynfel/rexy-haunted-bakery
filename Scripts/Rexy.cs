@@ -7,6 +7,7 @@ public class Rexy : KinematicBody2D {
     [Export] public float JumpVelocity = 300f;
     [Export] public float HorizontalSpeed = 100f;
     [Export] public float CoyoteTime = 0.1f;
+    [Export] public float Push = 1f;
     public AnimationTree Move;
     public AnimationTree Facing;
     public Vector2 Velocity = new Vector2();
@@ -65,7 +66,7 @@ public class Rexy : KinematicBody2D {
             Jumped = true;
         } else if (Input.IsActionJustReleased("jump")) {
             if (Velocity.y < 0) {
-                Velocity.y /= 2;
+                Velocity.y *= 0.4f;
             }
             Jumped = false;
         } else {
@@ -74,7 +75,13 @@ public class Rexy : KinematicBody2D {
                 Jumped = false;
             }
         }
-        Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up);
+        Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up, stopOnSlope: false, infiniteInertia: false);
         RefreshAnimationConditions();
+        for (int collisionIndex = 0 ; collisionIndex < GetSlideCount() ; collisionIndex++) {
+            KinematicCollision2D collision = GetSlideCollision(collisionIndex);
+            if (collision.Collider is RigidBody2D body) {
+                body.ApplyCentralImpulse(-collision.Normal * Push);
+            }
+        }
     }
 }

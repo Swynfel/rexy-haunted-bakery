@@ -4,8 +4,8 @@
 [ext_resource path="res://Scripts/Rexy.cs" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=16]
-radius = 5.0
-height = 3.0
+radius = 4.5
+height = 0.0
 
 [sub_resource type="Animation" id=17]
 resource_name = "idle"
@@ -242,21 +242,27 @@ start_node = "look-right"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=63]
 
 [node name="Rexy" type="KinematicBody2D"]
+z_index = 1
 script = ExtResource( 2 )
 VerticalAcceleration = 800.0
 JumpVelocity = 275.0
 HorizontalSpeed = 80.0
 CoyoteTime = 0.08
+Push = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0, 1.5 )
+position = Vector2( 0, 1 )
 shape = SubResource( 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 2, 8, 4.375, 2, -4.375, 2, -2, 8 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 17 )
