@@ -15,6 +15,6 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Template"
-run/main_scene="res://Scenes/Test.tscn"
+config/name="RexyHauntedBakery"
+run/main_scene="res://Scenes/TestLevel.tscn"
 config/icon="res://icon.png"

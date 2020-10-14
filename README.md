@@ -1,19 +1,6 @@
-# Godot Template
-This is a template to quickly start making games with the game engine [Godot](https://godotengine.org/) in the C# language.
+# Rexy's Haunted Bakery
 
-I ([@Swynfel](https://github.com/Swynfel)) plan on using it to avoid waisting time making a clean repository during game-jams.
-
-This repository uses the ["Unlicense" License](LICENSE), so feel free to use it or take it as inspiration, it comes with no string attached.
-
-### Features
-- **README.md**
-- **.gitignore** for
-  - Godot
-  - VSCode
-  - Krita
-  - Piskel
-- Utility classes and functions
-- Auto-formatting with `omnisharp.json`
+ [Godot](https://godotengine.org/) in the C# language.
 
 ## Downloading the repository
 
@@ -21,7 +8,7 @@ This repository uses [git lfs](https://git-lfs.github.com/) to better store larg
 
 Then, you can clone the repository with
 ```
-git lfs clone git@github.com:Swynfel/template.git
+git lfs clone git@github.com:Swynfel/rexy-haunted-bakery.git
 ```
 
 ## Dependencies

@@ -57,10 +57,10 @@ namespace Utils {
                 return Encoding.EncodeNumeric(color.ToRgba64());
             }
             if (obj is IEnumerable<object> obj_enumerable) {
-                return obj_enumerable.Select(obj => Encode(obj)).ToGodotArray();
+                return obj_enumerable.Select(element => Encode(element)).ToGodotArray();
             }
             if (obj is IEnumerable enumerable) {
-                return enumerable.Cast<object>().Select(obj => Encode(obj)).ToGodotArray();
+                return enumerable.Cast<object>().Select(element => Encode(element)).ToGodotArray();
             }
             return obj;
         }
