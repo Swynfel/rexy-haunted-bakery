@@ -63,6 +63,12 @@ public class Hand : Position2D {
 
     public override void _PhysicsProcess(float delta) {
         base._PhysicsProcess(delta);
+        if (baguette != null && !IsInstanceValid(baguette)) {
+            holdingBread = false;
+            placingBread = false;
+            baguette = null;
+            return;
+        }
         PlaceBaguette();
     }
 
