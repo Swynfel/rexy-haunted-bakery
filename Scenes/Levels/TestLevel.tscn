@@ -106,4 +106,4 @@ position = Vector2( 130, 114 )
 position = Vector2( 180, 72 )
 
 [node name="Oven" parent="." instance=ExtResource( 5 )]
-position = Vector2( 23.139, 167.919 )
+position = Vector2( 24, 168 )

@@ -3,9 +3,11 @@ using Godot;
 using Utils;
 
 public class Rexy : KinematicBody2D {
-
     [Export] public float VerticalAcceleration = 1000f;
     [Export] public float JumpVelocity = 300f;
+    [Export] public float JumpTime = 0.4f;
+    [Export] public float JumpFloatFactor = 0.9f;
+    [Export] public float JumpInteruptFactor = 0.35f;
     [Export] public float HorizontalSpeed = 100f;
     [Export] public float CoyoteTime = 0.1f;
     [Export] public float Push = 1f;
@@ -26,6 +28,7 @@ public class Rexy : KinematicBody2D {
     public bool IsOnGround => !Jumped && timeSinceLeftFloor <= CoyoteTime;
     public bool Jumped = false;
     private float timeSinceLeftFloor;
+    private float timeSinceJumped;
 
     public int GetXDirection() {
         int x = 0;
@@ -50,8 +53,10 @@ public class Rexy : KinematicBody2D {
                 timeSinceLeftFloor += delta;
             }
         }
+        if (Jumped) {
+            timeSinceJumped += delta;
+        }
     }
-
     private void RefreshAnimationConditions() {
         // Running Horizontally
         int x = GetXDirection();
@@ -78,18 +83,26 @@ public class Rexy : KinematicBody2D {
         if (Input.IsActionJustPressed("jump") && IsOnGround) {
             Velocity.y = -JumpVelocity;
             Jumped = true;
-        } else if (Input.IsActionJustReleased("jump")) {
-            if (Velocity.y < 0) {
-                Velocity.y *= 0.4f;
-            }
-            Jumped = false;
+            timeSinceJumped = 0f;
         } else {
-            Velocity += delta * VerticalAcceleration * Vector2.Down;
-            if (Velocity.y > 0) {
-                Jumped = false;
+            if (Jumped) {
+                if (Input.IsActionJustReleased("jump")) {
+                    if (Velocity.y < 0) {
+                        Velocity.y *= 0.35f;
+                    }
+                    Jumped = false;
+                } else if (Velocity.y > 0 || timeSinceJumped >= JumpTime) {
+                    Jumped = false;
+                }
             }
+            float factor = Jumped ? JumpFloatFactor : 1.0f;
+            Velocity += delta * factor * VerticalAcceleration * Vector2.Down;
         }
-        Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up, stopOnSlope: false, infiniteInertia: false);
+        Vector2 targetVelocity = Velocity;
+        Velocity = MoveAndSlide(Velocity, upDirection: Vector2.Up, stopOnSlope: !Jumped && IsOnGround, infiniteInertia: false);
+        if (Velocity.y > targetVelocity.y) {
+            Velocity.y = targetVelocity.y + 4f * delta * (Velocity.y - targetVelocity.y);
+        }
         RefreshAnimationConditions();
         for (int collisionIndex = 0 ; collisionIndex < GetSlideCount() ; collisionIndex++) {
             KinematicCollision2D collision = GetSlideCollision(collisionIndex);

@@ -253,7 +253,6 @@ animation = "jump-start"
 animation = "jump-up"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
-switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
@@ -346,9 +345,10 @@ z_index = 1
 collision_layer = 33
 collision_mask = 33
 script = ExtResource( 2 )
-VerticalAcceleration = 800.0
-JumpVelocity = 275.0
-HorizontalSpeed = 80.0
+VerticalAcceleration = 650.0
+JumpVelocity = 220.0
+JumpFloatFactor = 0.85
+HorizontalSpeed = 75.0
 CoyoteTime = 0.08
 Push = 0.5
 
