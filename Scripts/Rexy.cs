@@ -11,13 +11,13 @@ public class Rexy : KinematicBody2D {
     [Export] public float Push = 1f;
     private AnimationTree moveAnimation;
     private AnimationTree facingAnimation;
-    private Hand hand;
+    public Hand Claw;
     private Position2D feet;
     public Vector2 Velocity = new Vector2();
     public override void _Ready() {
         moveAnimation = GetNode<AnimationTree>("Anim/Move");
         facingAnimation = GetNode<AnimationTree>("Anim/Facing");
-        hand = GetNode<Hand>("Hand");
+        Claw = GetNode<Hand>("Hand");
         feet = GetNode<Position2D>("Feet");
         moveAnimation.Active = true;
         facingAnimation.Active = true;
@@ -58,7 +58,7 @@ public class Rexy : KinematicBody2D {
         bool running_right = x > 0;
         bool running_left = x < 0;
         bool running = running_left || running_right;
-        if (!hand.LockDirection) {
+        if (!Claw.LockDirection) {
             facingAnimation.Set("parameters/conditions/right", running_right);
             facingAnimation.Set("parameters/conditions/left", running_left);
         }

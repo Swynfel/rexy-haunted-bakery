@@ -7,7 +7,9 @@ public class Baguette : RigidBody2D {
     }
     [Export] public float Length;
     [Export] public float GrowDuration;
+    [Export] NodePath areaPath;
     [Signal] public delegate void GrowthStoped();
+    public Area2D Area;
     public bool IsGrowing;
     private float growthTime;
     public AnimationPlayer Anim;
@@ -16,8 +18,29 @@ public class Baguette : RigidBody2D {
     private int collisionCount = 0;
     public override void _Ready() {
         Anim = GetNode<AnimationPlayer>("Anim");
-        Connect("body_entered", this, nameof(BodyEntered));
-        Connect("body_exited", this, nameof(BodyExited));
+        Area = GetNode<Area2D>(areaPath);
+    }
+
+    public bool IsTangible { get; private set; } = true;
+
+    private uint cachedMask;
+    private uint cachedLayer;
+    public void Intangible() {
+        if (IsTangible) {
+            IsTangible = false;
+            cachedMask = CollisionMask;
+            cachedLayer = CollisionLayer;
+            CollisionMask = 0;
+            CollisionLayer = 0;
+        }
+    }
+
+    public void Tangible() {
+        if (!IsTangible) {
+            IsTangible = true;
+            CollisionMask = cachedMask;
+            CollisionLayer = cachedLayer;
+        }
     }
 
     public void StartGrowth() {
@@ -29,24 +52,11 @@ public class Baguette : RigidBody2D {
         }
     }
 
-    public void BodyEntered(Node body) {
-        if (!body.IsInGroup("Rexy")) {
-            collisionCount++;
-            StopGrowth();
-        }
-    }
-    public void BodyExited(Node body) {
-        if (!body.IsInGroup("Rexy")) {
-            collisionCount--;
-        }
-    }
-
     public override void _PhysicsProcess(float delta) {
         base._PhysicsProcess(delta);
         if (IsGrowing) {
             growthTime += delta;
-            if (growthTime >= GrowDuration) {
-                Anim.Advance(Anim.CurrentAnimationPosition - delta);
+            if (growthTime >= GrowDuration || Area.GetOverlappingBodies().Count > 0) {
                 StopGrowth();
             }
         }

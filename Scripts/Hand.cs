@@ -6,12 +6,8 @@ public class Hand : Position2D {
     public bool LockDirection => placingBread;
     private bool holdingBread = false;
     private bool placingBread = false;
-    private bool readyForPlacement => readyTime >= readyCooldown;
+    private bool readyForPlacement;
     private const float readyCooldown = 0.05f;
-    private float readyTime = 0.0f;
-    public override void _Ready() {
-        CallDeferred(nameof(HoldBaguette));
-    }
 
     Baguette baguette = null;
 
@@ -20,18 +16,16 @@ public class Hand : Position2D {
 
     public override void _Process(float delta) {
         base._Process(delta);
-        if (holdingBread) {
+        if (NearbyOven != null && Input.IsActionJustPressed("get")) {
+            HoldBaguette();
+        } else if (holdingBread) {
             if (!IsInstanceValid(baguette)) {
                 holdingBread = false;
                 placingBread = false;
                 baguette = null;
                 return;
             }
-            if (baguette.IsColliding) {
-                readyTime = 0f;
-            } else {
-                readyTime += delta;
-            }
+            readyForPlacement = baguette.Area.GetOverlappingBodies().Count == 0;
             baguette.Modulate = placingBread ? Colors.White : readyForPlacement ? placableColor : notPlacableColor;
             if (Input.IsActionJustPressed("use") && !placingBread && readyForPlacement) {
                 placingBread = true;
@@ -40,6 +34,23 @@ public class Hand : Position2D {
             if (Input.IsActionJustReleased("use") && placingBread) {
                 baguette.StopGrowth();
             }
+        }
+    }
+
+    public Oven NearbyOven;
+
+    public void NextToOven(Oven oven) {
+        if (NearbyOven != null) {
+            NearbyOven.UnSelect();
+        }
+        NearbyOven = oven;
+        NearbyOven.Select();
+    }
+
+    public void LeaveOven(Oven oven) {
+        if (oven == NearbyOven) {
+            NearbyOven.UnSelect();
+            NearbyOven = null;
         }
     }
 
@@ -52,6 +63,7 @@ public class Hand : Position2D {
         baguette = Baguette.Instance();
         GetNode("../../").AddChild(baguette);
         baguette.Connect(nameof(Baguette.GrowthStoped), this, nameof(ReleaseBaguette));
+        baguette.Intangible();
         PlaceBaguette();
     }
 
@@ -76,6 +88,7 @@ public class Hand : Position2D {
         holdingBread = false;
         placingBread = false;
         baguette.Disconnect(nameof(Baguette.GrowthStoped), this, nameof(ReleaseBaguette));
+        baguette.Tangible();
         baguette = null;
 
     }
