@@ -58,9 +58,9 @@ public class Rexy : KinematicBody2D {
         moveAnimation.Set("parameters/conditions/grounded", IsOnGround);
         moveAnimation.Set("parameters/conditions/airborn", !IsOnGround);
         // Jump / Fall
-        bool moving_up = Velocity.y > 0;
-        moveAnimation.Set("parameters/airborn/conditions/up", moving_up);
-        moveAnimation.Set("parameters/airborn/conditions/down", !moving_up);
+        bool moving_down = Velocity.y > 0;
+        moveAnimation.Set("parameters/airborn/conditions/up", !moving_down);
+        moveAnimation.Set("parameters/airborn/conditions/down", moving_down);
     }
     public override void _PhysicsProcess(float delta) {
         RefreshPhysicsState(delta);
