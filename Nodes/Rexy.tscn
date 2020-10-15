@@ -354,7 +354,7 @@ Push = 0.5
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 10
+frame = 8
 
 [node name="Hand" type="Position2D" parent="."]
 position = Vector2( 6, 2 )
@@ -365,8 +365,7 @@ visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Legs" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 2, 8, 4.375, 2, -4.375, 2, -2, 8 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
@@ -397,3 +396,6 @@ anim_player = NodePath("..")
 parameters/playback = SubResource( 35 )
 parameters/conditions/left = false
 parameters/conditions/right = false
+
+[node name="Feet" type="Position2D" parent="."]
+position = Vector2( 0, 8 )

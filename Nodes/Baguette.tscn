@@ -7,7 +7,7 @@
 atlas = ExtResource( 1 )
 region = Rect2( 0, 2, 8, 4 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 8, 2, 16, 4 )
 
@@ -86,7 +86,9 @@ tracks/4/keys = {
 }
 
 [node name="Baguette" type="RigidBody2D"]
-contacts_reported = 4
+mode = 3
+continuous_cd = 2
+contacts_reported = 32
 contact_monitor = true
 script = ExtResource( 2 )
 Length = 16.0
@@ -100,7 +102,7 @@ offset = Vector2( -4, 0 )
 
 [node name="Middle" type="Sprite" parent="Sprites"]
 scale = Vector2( 1e-05, 1 )
-texture = SubResource( 2 )
+texture = SubResource( 6 )
 
 [node name="RightTip" type="Sprite" parent="Sprites"]
 texture = SubResource( 3 )

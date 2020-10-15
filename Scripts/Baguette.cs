@@ -12,10 +12,12 @@ public class Baguette : RigidBody2D {
     private float growthTime;
     public AnimationPlayer Anim;
     public bool IsAnchoredLeft;
+    public bool IsColliding => collisionCount > 0;
+    private int collisionCount = 0;
     public override void _Ready() {
         Anim = GetNode<AnimationPlayer>("Anim");
         Connect("body_entered", this, nameof(BodyEntered));
-        StartGrowth();
+        Connect("body_exited", this, nameof(BodyExited));
     }
 
     public void StartGrowth() {
@@ -29,7 +31,13 @@ public class Baguette : RigidBody2D {
 
     public void BodyEntered(Node body) {
         if (!body.IsInGroup("Rexy")) {
+            collisionCount++;
             StopGrowth();
+        }
+    }
+    public void BodyExited(Node body) {
+        if (!body.IsInGroup("Rexy")) {
+            collisionCount--;
         }
     }
 

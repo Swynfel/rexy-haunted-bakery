@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Utils;
 
 public class Rexy : KinematicBody2D {
 
@@ -11,11 +12,13 @@ public class Rexy : KinematicBody2D {
     private AnimationTree moveAnimation;
     private AnimationTree facingAnimation;
     private Hand hand;
+    private Position2D feet;
     public Vector2 Velocity = new Vector2();
     public override void _Ready() {
         moveAnimation = GetNode<AnimationTree>("Anim/Move");
         facingAnimation = GetNode<AnimationTree>("Anim/Facing");
         hand = GetNode<Hand>("Hand");
+        feet = GetNode<Position2D>("Feet");
         moveAnimation.Active = true;
         facingAnimation.Active = true;
     }
@@ -38,7 +41,14 @@ public class Rexy : KinematicBody2D {
         if (IsOnFloor()) {
             timeSinceLeftFloor = 0f;
         } else {
-            timeSinceLeftFloor += delta;
+            Godot.Collections.Dictionary intersections = GetWorld2d().DirectSpaceState
+                .IntersectRay(feet.GlobalPosition, feet.GlobalPosition + new Vector2(0, 2), exclude: Extensions.ArrayFrom(this));
+            if (intersections.Count > 1) {
+                // intersections["collider"];
+                timeSinceLeftFloor = 0f;
+            } else {
+                timeSinceLeftFloor += delta;
+            }
         }
     }
 
