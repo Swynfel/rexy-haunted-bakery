@@ -85,7 +85,9 @@ tracks/4/keys = {
 "values": [ 16.0, 16.0, 70.8571, 144.0 ]
 }
 
-[node name="Baguette" type="RigidBody2D"]
+[node name="Baguette" type="RigidBody2D" groups=[
+"Bread",
+]]
 mode = 3
 continuous_cd = 2
 contacts_reported = 32

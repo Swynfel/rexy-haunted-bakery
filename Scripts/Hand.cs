@@ -21,6 +21,12 @@ public class Hand : Position2D {
     public override void _Process(float delta) {
         base._Process(delta);
         if (holdingBread) {
+            if (!IsInstanceValid(baguette)) {
+                holdingBread = false;
+                placingBread = false;
+                baguette = null;
+                return;
+            }
             if (baguette.IsColliding) {
                 readyTime = 0f;
             } else {

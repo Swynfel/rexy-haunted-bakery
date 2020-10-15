@@ -19,6 +19,10 @@ config/name="RexyHauntedBakery"
 run/main_scene="res://Scenes/TestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CheatCode="*res://Scripts/CheatCode.cs"
+
 [display]
 
 window/size/width=256
