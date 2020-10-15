@@ -1,41 +1,116 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Sprites/breads.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Baguette.cs" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 8, 0, 16, 8 )
+region = Rect2( 0, 2, 8, 4 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 0, 8, 8 )
+region = Rect2( 8, 2, 16, 4 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 2, 8, 4 )
 
 [sub_resource type="CapsuleShape2D" id=4]
+resource_local_to_scene = true
 radius = 2.0
-height = 28.0
+height = 12.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "length"
+length = 1.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 12.0, 12.0, 66.8571, 140.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Middle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 3.42857, 1 ), Vector2( 8, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/LeftTip:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -27.4286, 0 ), Vector2( -64, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/RightTip:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 27.4286, 0 ), Vector2( 64, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:Length")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 16.0, 16.0, 70.8571, 144.0 ]
+}
 
 [node name="Baguette" type="RigidBody2D"]
+contacts_reported = 4
+contact_monitor = true
+script = ExtResource( 2 )
+Length = 16.0
+GrowDuration = 1.1
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="LeftTip" type="Sprite" parent="Sprites"]
-position = Vector2( -8, 0 )
 texture = SubResource( 1 )
 offset = Vector2( -4, 0 )
 
 [node name="Middle" type="Sprite" parent="Sprites"]
-texture = SubResource( 3 )
+scale = Vector2( 1e-05, 1 )
+texture = SubResource( 2 )
 
 [node name="RightTip" type="Sprite" parent="Sprites"]
-position = Vector2( 8, 0 )
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 offset = Vector2( 4, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 rotation = 1.57079
 shape = SubResource( 4 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/length = SubResource( 5 )

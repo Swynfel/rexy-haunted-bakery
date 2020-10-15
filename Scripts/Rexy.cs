@@ -8,14 +8,16 @@ public class Rexy : KinematicBody2D {
     [Export] public float HorizontalSpeed = 100f;
     [Export] public float CoyoteTime = 0.1f;
     [Export] public float Push = 1f;
-    public AnimationTree Move;
-    public AnimationTree Facing;
+    private AnimationTree moveAnimation;
+    private AnimationTree facingAnimation;
+    private Hand hand;
     public Vector2 Velocity = new Vector2();
     public override void _Ready() {
-        Move = GetNode<AnimationTree>("Anim/Move");
-        Facing = GetNode<AnimationTree>("Anim/Facing");
-        Move.Active = true;
-        Facing.Active = true;
+        moveAnimation = GetNode<AnimationTree>("Anim/Move");
+        facingAnimation = GetNode<AnimationTree>("Anim/Facing");
+        hand = GetNode<Hand>("Hand");
+        moveAnimation.Active = true;
+        facingAnimation.Active = true;
     }
 
     public bool IsOnGround => !Jumped && timeSinceLeftFloor <= CoyoteTime;
@@ -46,17 +48,19 @@ public class Rexy : KinematicBody2D {
         bool running_right = x > 0;
         bool running_left = x < 0;
         bool running = running_left || running_right;
-        Facing.Set("parameters/conditions/right", running_right);
-        Facing.Set("parameters/conditions/left", running_left);
-        Move.Set("parameters/conditions/running", running);
-        Move.Set("parameters/conditions/not-running", !running);
+        if (!hand.LockDirection) {
+            facingAnimation.Set("parameters/conditions/right", running_right);
+            facingAnimation.Set("parameters/conditions/left", running_left);
+        }
+        moveAnimation.Set("parameters/conditions/running", running);
+        moveAnimation.Set("parameters/conditions/not-running", !running);
         // On Ground
-        Move.Set("parameters/conditions/grounded", IsOnGround);
-        Move.Set("parameters/conditions/airborn", !IsOnGround);
+        moveAnimation.Set("parameters/conditions/grounded", IsOnGround);
+        moveAnimation.Set("parameters/conditions/airborn", !IsOnGround);
         // Jump / Fall
         bool moving_up = Velocity.y > 0;
-        Move.Set("parameters/airborn/conditions/up", moving_up);
-        Move.Set("parameters/airborn/conditions/down", !moving_up);
+        moveAnimation.Set("parameters/airborn/conditions/up", moving_up);
+        moveAnimation.Set("parameters/airborn/conditions/down", !moving_up);
     }
     public override void _PhysicsProcess(float delta) {
         RefreshPhysicsState(delta);
@@ -80,7 +84,7 @@ public class Rexy : KinematicBody2D {
         for (int collisionIndex = 0 ; collisionIndex < GetSlideCount() ; collisionIndex++) {
             KinematicCollision2D collision = GetSlideCollision(collisionIndex);
             if (collision.Collider is RigidBody2D body) {
-                body.ApplyCentralImpulse(-collision.Normal * Push);
+                body.ApplyImpulse(collision.Position - body.Position, -collision.Normal * Push);
             }
         }
     }
