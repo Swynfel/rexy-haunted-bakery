@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=1]
+
+[node name="RankLine" type="HBoxContainer"]
+margin_right = 118.0
+margin_bottom = 15.0
+theme = ExtResource( 1 )
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="Label" parent="."]
+margin_right = 20.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 20, 15 )
+size_flags_vertical = 5
+text = "44"
+align = 1
+
+[node name="Name" type="Label" parent="."]
+margin_left = 18.0
+margin_right = 89.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "VeryLongName"
+
+[node name="Time" type="Label" parent="."]
+margin_left = 87.0
+margin_right = 129.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "00:00:00"
+align = 2
