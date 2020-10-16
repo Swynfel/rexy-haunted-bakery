@@ -2,6 +2,8 @@ using System;
 using Godot;
 
 public class InfoHeader : HBoxContainer {
+    public static ChapterId Chapter { get; private set; } = ChapterId.NONE;
+    public static int Level { get; private set; } = 99;
     public static InfoHeader Instance;
     public float Time;
     Label levelLabel;
@@ -12,12 +14,11 @@ public class InfoHeader : HBoxContainer {
         levelLabel = GetNode<Label>("Level");
     }
 
-    public void SetLevelName(string name) {
-        levelLabel.Text = name;
+    private void UpdateLabel() {
+        levelLabel.Text = $"{Chapter} - {Level}";
     }
 
-    public override void _PhysicsProcess(float delta) {
-        Time += delta;
+    private void UpdateTime() {
         float time = Time;
         int minutes = (int) (time / 60);
         time -= 60 * minutes;
@@ -25,5 +26,13 @@ public class InfoHeader : HBoxContainer {
         time -= seconds;
         int dec = (int) (time * 100);
         timeLabel.Text = $"{minutes}:{seconds:00}.{dec:00}";
+    }
+
+    public override void _PhysicsProcess(float delta) {
+        if (!GetTree().Paused) {
+            Time += delta;
+            UpdateTime();
+        }
+        UpdateLabel();
     }
 }

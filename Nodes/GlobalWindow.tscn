@@ -22,6 +22,7 @@ shader_param/outline_color = Color( 0.654902, 0.286275, 0.184314, 1 )
 shader_param/scale = 0.0
 
 [node name="GlobalWindow" type="Container"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

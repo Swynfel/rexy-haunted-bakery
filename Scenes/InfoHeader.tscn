@@ -12,6 +12,8 @@ extra_spacing_bottom = -2
 font_data = ExtResource( 4 )
 
 [node name="InfoLayer" type="CanvasLayer"]
+pause_mode = 2
+layer = 11
 follow_viewport_enable = true
 
 [node name="Window" type="Control" parent="."]

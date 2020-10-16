@@ -4,9 +4,11 @@ using Godot;
 public class Level : Node2D {
     [Export(PropertyHint.File)] string nextScene;
     [Export] bool isTimed;
+    [Export] int level;
 
     public override void _Ready() {
-        InfoHeader.Instance.SetLevelName(Name);
+        Global.Level = level;
+        GetTree().Paused = false;
     }
     public void FinishLevel() {
         GetTree().ChangeScene(nextScene);
@@ -14,5 +16,7 @@ public class Level : Node2D {
 
     public void FinishChapter() {
         ScoreBoard scoreBoard = (ScoreBoard) ResourceLoader.Load<PackedScene>("res://Scenes/Score.tscn").Instance();
+        GetTree().Root.AddChild(scoreBoard);
+        GetTree().Paused = true;
     }
 }
