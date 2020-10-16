@@ -1,10 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/GlobalWindow.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Shaders/outlined_background.shader" type="Shader" id=3]
 [ext_resource path="res://Scripts/BackgroundShader.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/PixelCamera.cs" type="Script" id=5]
+[ext_resource path="res://Assets/Shaders/outlined_wall.shader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/escaped_wall_color = Color( 0.262745, 0.113725, 0.380392, 1 )
+shader_param/escaped_outline_color = Color( 0.4, 0.109804, 0.513726, 1 )
+shader_param/main_color = Color( 0.262745, 0.113725, 0.380392, 1 )
+shader_param/outline_color = Color( 0.4, 0.109804, 0.513726, 1 )
+shader_param/scale = 4.0
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -54,10 +63,24 @@ texture = ExtResource( 1 )
 
 [node name="Anchor" type="Node2D" parent="Box"]
 
-[node name="Front" type="CanvasLayer" parent="."]
+[node name="Wall" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="BackgroundShader" type="ColorRect" parent="Front"]
+[node name="WallShader" type="ColorRect" parent="Wall"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+GlobalScalePath = NodePath("../..")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BackgroundShader" type="ColorRect" parent="Background"]
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

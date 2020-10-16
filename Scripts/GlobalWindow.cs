@@ -47,11 +47,10 @@ public class GlobalWindow : Container {
             }
         }
 
-        EmitSignal(nameof(ContainerResized), Rectangle);
-
         if (oldScale != Scale) {
             oldScale = Scale;
             EmitSignal(nameof(ScaleChanged), Scale);
         }
+        EmitSignal(nameof(ContainerResized), Rectangle);
     }
 }
