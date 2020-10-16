@@ -1,11 +1,11 @@
 public enum ChapterId {
-    Tutorial,
     NONE,
-    TOTAL = NONE,
+    Tutorial,
+    TOTAL,
 }
 
 public static class ChapterIdExtension {
     public static ChapterId Next(this ChapterId chapter) {
-        return chapter < ChapterId.TOTAL ? chapter + 1 : ChapterId.TOTAL;
+        return chapter < ChapterId.TOTAL ? chapter + 1 : ChapterId.NONE;
     }
 }

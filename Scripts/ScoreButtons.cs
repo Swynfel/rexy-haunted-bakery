@@ -18,12 +18,15 @@ public class ScoreButtons : VBoxContainer {
         GD.Print("[TODO]: Open Menu");
     }
     public void Retry() {
-        GetTree().ChangeScene(Global.Scene(Global.Chapter, 0));
+        Global.Level = 1;
+        GetTree().ChangeScene(Global.CHAPTER_INTRO);
         ScoreBoard.Instance.QueueFree();
         Global.Time = 0;
     }
     public void Continue() {
-        GetTree().ChangeScene(Global.Scene(Global.Chapter.Next(), 0));
+        Global.Level = 1;
+        Global.Chapter = Global.Chapter.Next();
+        GetTree().ChangeScene(Global.CHAPTER_INTRO);
         ScoreBoard.Instance.QueueFree();
         Global.Time = 0;
     }

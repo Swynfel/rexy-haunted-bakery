@@ -10,7 +10,7 @@ public class InfoHeader : HBoxContainer {
     }
 
     private void UpdateLabel() {
-        levelLabel.Text = $"{Global.Chapter} - {Global.Level}";
+        levelLabel.Text = Global.LevelFullName();
     }
 
     private void UpdateTime() {
