@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/AutoWindow.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/InfoHeader.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/monumpix/monumpix.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 2
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 4 )
+
+[node name="InfoLayer" type="CanvasLayer"]
+follow_viewport_enable = true
+
+[node name="Window" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Window"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 13 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 0.262745, 0.113725, 0.380392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="Window"]
+anchor_right = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="Window/HBox"]
+margin_right = 126.0
+margin_bottom = 13.0
+size_flags_horizontal = 3
+text = "Level 0-0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Window/HBox"]
+margin_left = 130.0
+margin_top = 1.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "00:00:00"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

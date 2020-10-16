@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 CheatCode="*res://Scripts/CheatCode.cs"
 GlobalWindow="*res://Nodes/GlobalWindow.tscn"
+GlobalTimer="*res://Scenes/InfoHeader.tscn"
 
 [display]
 
