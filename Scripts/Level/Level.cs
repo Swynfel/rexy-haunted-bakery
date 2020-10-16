@@ -11,4 +11,8 @@ public class Level : Node2D {
     public void FinishLevel() {
         GetTree().ChangeScene(nextScene);
     }
+
+    public void FinishChapter() {
+        ScoreBoard scoreBoard = (ScoreBoard) ResourceLoader.Load<PackedScene>("res://Scenes/Score.tscn").Instance();
+    }
 }
