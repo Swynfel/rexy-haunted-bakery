@@ -2,16 +2,16 @@ using System;
 using Godot;
 
 public class Level : Node2D {
-    [Export(PropertyHint.File)] string nextScene;
-    [Export] bool isTimed;
-    [Export] int level;
+    [Export] ChapterId chapter = ChapterId.Tutorial;
+    [Export] int level = 99;
 
     public override void _Ready() {
+        Global.Chapter = chapter;
         Global.Level = level;
         GetTree().Paused = false;
     }
     public void FinishLevel() {
-        GetTree().ChangeScene(nextScene);
+        GetTree().ChangeScene(Global.Scene(chapter, level + 1));
     }
 
     public void FinishChapter() {

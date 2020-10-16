@@ -9,19 +9,23 @@ public class ScoreButtons : VBoxContainer {
         Button menuButton = GetNode<Button>(menuButtonPath);
         Button retryButton = GetNode<Button>(retryButtonPath);
         Button continueButton = GetNode<Button>(continueButtonPath);
-        menuButton.Connect("button_pressed", this, nameof(Menu));
-        retryButton.Connect("button_pressed", this, nameof(Retry));
-        continueButton.Connect("button_pressed", this, nameof(Continue));
+        menuButton.Connect("pressed", this, nameof(Menu));
+        retryButton.Connect("pressed", this, nameof(Retry));
+        continueButton.Connect("pressed", this, nameof(Continue));
     }
 
     public void Menu() {
         GD.Print("[TODO]: Open Menu");
     }
     public void Retry() {
-        GetTree().ChangeScene(InfoHeader.Chapter.Scene());
+        GetTree().ChangeScene(Global.Scene(Global.Chapter, 0));
+        ScoreBoard.Instance.QueueFree();
+        Global.Time = 0;
     }
     public void Continue() {
-        GetTree().ChangeScene(InfoHeader.Chapter.Next().Scene());
+        GetTree().ChangeScene(Global.Scene(Global.Chapter.Next(), 0));
+        ScoreBoard.Instance.QueueFree();
+        Global.Time = 0;
     }
 
 }

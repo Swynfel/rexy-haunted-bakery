@@ -119,7 +119,7 @@ tracks/6/keys = {
 } ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath(".")
+tracks/7/path = NodePath("PanelContainer/Margin/VBox/HBox/Right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -129,7 +129,7 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "update"
+"method": "ActivateButtons"
 } ]
 }
 
@@ -254,6 +254,9 @@ mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 1
 script = ExtResource( 6 )
+menuButtonPath = NodePath("Menu")
+retryButtonPath = NodePath("Retry")
+continueButtonPath = NodePath("Continue")
 
 [node name="Name" type="Label" parent="Window/PanelContainer/Margin/VBox/HBox/Right"]
 margin_left = 3.0
@@ -314,13 +317,14 @@ size_flags_horizontal = 3
 text = "44th"
 align = 2
 
-[node name="Back" type="Button" parent="Window/PanelContainer/Margin/VBox/HBox/Right"]
+[node name="Menu" type="Button" parent="Window/PanelContainer/Margin/VBox/HBox/Right"]
 margin_top = 80.0
 margin_right = 98.0
 margin_bottom = 95.0
 rect_min_size = Vector2( 0, 15 )
 focus_mode = 0
 size_flags_horizontal = 5
+shortcut_in_tooltip = false
 action_mode = 0
 enabled_focus_mode = 0
 shortcut = SubResource( 2 )
@@ -333,6 +337,7 @@ margin_bottom = 114.0
 rect_min_size = Vector2( 0, 15 )
 focus_mode = 0
 size_flags_horizontal = 5
+shortcut_in_tooltip = false
 action_mode = 0
 enabled_focus_mode = 0
 shortcut = SubResource( 4 )
@@ -345,6 +350,7 @@ margin_bottom = 133.0
 rect_min_size = Vector2( 0, 15 )
 focus_mode = 0
 size_flags_horizontal = 5
+shortcut_in_tooltip = false
 action_mode = 0
 enabled_focus_mode = 0
 shortcut = SubResource( 6 )
