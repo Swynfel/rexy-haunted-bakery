@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Nodes/Global/Global.tscn"
-CheatCode="*res://Scripts/CheatCode.cs"
+CheatCode="*res://Scripts/Global/CheatCode.cs"
 GlobalWindow="*res://Nodes/Global/GlobalWindow.tscn"
 GlobalTimer="*res://Nodes/Global/InfoHeader.tscn"
 

@@ -1,8 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Sprites/ovens.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Oven.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Gameplay/Oven.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Shaders/oven.shader" type="Shader" id=3]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )

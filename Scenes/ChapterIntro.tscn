@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/AutoWindow.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/Theme/fonts/monumpix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Theme/fonts/peepo-18.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Scripts/ChapterIntro.cs" type="Script" id=5]
+[ext_resource path="res://Scripts/UI/ChapterIntro.cs" type="Script" id=5]
 
-[sub_resource type="StyleBoxLine" id=8]
+[sub_resource type="StyleBoxLine" id=1]
 color = Color( 0.4, 0.109804, 0.513726, 1 )
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 4
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "hide"
 length = 2.8
 tracks/0/type = "value"
@@ -296,7 +296,7 @@ margin_left = -128.0
 margin_top = 96.0
 margin_right = 128.0
 margin_bottom = 100.0
-custom_styles/separator = SubResource( 8 )
+custom_styles/separator = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -316,4 +316,4 @@ __meta__ = {
 }
 
 [node name="Anim" type="AnimationPlayer" parent="Window"]
-anims/hide = SubResource( 7 )
+anims/hide = SubResource( 2 )

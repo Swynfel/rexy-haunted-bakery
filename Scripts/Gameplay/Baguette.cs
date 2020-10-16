@@ -3,7 +3,7 @@ using Godot;
 
 public class Baguette : RigidBody2D {
     public static Baguette Instance() {
-        return (Baguette) ResourceLoader.Load<PackedScene>("res://Nodes/Baguette.tscn").Instance();
+        return (Baguette) ResourceLoader.Load<PackedScene>("res://Nodes/Gameplay/Bread/Baguette.tscn").Instance();
     }
     [Export] public float Length;
     [Export] public float GrowDuration;
