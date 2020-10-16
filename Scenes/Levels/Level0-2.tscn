@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Nodes/Exit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Rexy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/instructions_buttons.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -69,7 +70,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 3/z_index = 0
 
-[node name="Level" type="Node2D"]
+[node name="Level0-2" type="Node2D"]
 script = ExtResource( 3 )
 nextScene = "res://Scenes/Levels/Level0-1.tscn"
 
@@ -90,3 +91,9 @@ position = Vector2( 232, 40 )
 
 [node name="Exit2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 232, 24 )
+
+[node name="Help" type="Sprite" parent="."]
+position = Vector2( 32, 24 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
