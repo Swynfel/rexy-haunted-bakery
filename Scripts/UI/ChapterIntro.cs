@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 
 public class ChapterIntro : AutoCanvasWindow {
@@ -10,8 +11,10 @@ public class ChapterIntro : AutoCanvasWindow {
         CallDeferred(nameof(LoadLevel));
         base._Ready();
         GetTree().Paused = true;
-        GUI.Instance.HideMenuInstantly();
         Global.Time = 0;
+        GUI.Instance.HideMenuInstantly();
+        // Requests leaderboard in advance
+        Task task = Scores.Instance.GetChapterScore(Global.Chapter);
     }
 
     Node level;

@@ -3,13 +3,14 @@ using Godot;
 
 public class ScoreBoard : AutoCanvasWindow {
     public static ScoreBoard Instance;
+    [Export] NodePath chapterNamePath;
     [Export] NodePath animationPath;
     [Export] NodePath leaderboardPath;
     [Export] NodePath namePath;
     [Export] NodePath timePath;
     [Export] NodePath bestPath;
     [Export] NodePath rankPath;
-    public Control Leaderboard;
+    public LeaderBoard Leaderboard;
     public Label NameField;
     public Label TimeField;
     public Label BestField;
@@ -24,12 +25,13 @@ public class ScoreBoard : AutoCanvasWindow {
     }
 
     public async void Setup() {
-        Leaderboard = GetNode<Control>(leaderboardPath);
+        Leaderboard = GetNode<LeaderBoard>(leaderboardPath);
         NameField = GetNode<Label>(namePath);
         TimeField = GetNode<Label>(timePath);
         BestField = GetNode<Label>(bestPath);
         RankField = GetNode<Label>(rankPath);
         // Exact
+        GetNode<Label>(chapterNamePath).Text = $"Chapter {(int) Global.Chapter} - {Global.Chapter.ToString()}";
         int centiseconds = (int) (100 * Global.Time);
         InfoHeader.TimeString(centiseconds);
         NameField.Text = Global.PlayerName;
@@ -37,14 +39,31 @@ public class ScoreBoard : AutoCanvasWindow {
         BestField.Text = "?:??.??";
         RankField.Text = "??";
         // Optimistic Leaderboard
-        UpdateLeaderBoard(Scores.Instance.GetCachedChapterScore(Global.Chapter));
+        Scores.ChapterScore score = Scores.Instance.GetCachedChapterScore(Global.Chapter);
+        score?.ForceInsertLine(Global.PlayerName, centiseconds);
+        UpdateScoreBoard(score);
         // Delayed Leaderboard
-        await Scores.Instance.AddScoreLine(Global.Chapter, Global.PlayerName, centiseconds);
-        UpdateLeaderBoard(await Scores.Instance.GetChapterScore(Global.Chapter, 0));
+        if (centiseconds >= 100) {
+            // No chapter can be finished in less than one second
+            // We can assume we are actually debugging, and so it should not be sent
+            await Scores.Instance.AddScoreLine(Global.Chapter, Global.PlayerName, centiseconds);
+        }
+        UpdateScoreBoard(await Scores.Instance.GetChapterScore(Global.Chapter, 0));
+    }
+    public async void ClearScore() {
+        await Scores.Instance.WipeChapter(Global.Chapter);
+        GD.Print("Force refresh");
+        UpdateScoreBoard(await Scores.Instance.GetChapterScore(Global.Chapter, 0));
+        GD.Print("Force refresh done");
     }
 
-    public void UpdateLeaderBoard(Scores.ChapterScore score) {
-        GD.Print("[TODO]: Update Leaderboard");
+    public void UpdateScoreBoard(Scores.ChapterScore score) {
+        Scores.ScoreLine line = score?.FindPlayer(Global.PlayerName);
+        if (line != null) {
+            BestField.Text = InfoHeader.TimeString(line.Time);
+            RankField.Text = line.Rank.ToString();
+        }
+        Leaderboard.UpdateLeaderBoard(score);
     }
 
     public void Done() {
