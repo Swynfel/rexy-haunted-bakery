@@ -6,7 +6,6 @@ public class ChapterIntro : AutoCanvasWindow {
     [Export] NodePath chapterLabelPath;
     public override void _Ready() {
         base._Ready();
-        GetTree().Paused = true;
         GetNode<AnimationPlayer>(animationPath).Play("hide");
         GetNode<Label>(chapterLabelPath).Text = Global.LevelFullName();
         CallDeferred(nameof(LoadLevel));

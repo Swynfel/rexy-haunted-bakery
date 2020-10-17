@@ -7,6 +7,7 @@ public class ScoreBoard : AutoCanvasWindow {
     public override void _Ready() {
         base._Ready();
         GetTree().Paused = true;
+        GUI.Instance.Off();
         Instance = this;
         GetNode<AnimationPlayer>(animationPath).Play("appear");
     }

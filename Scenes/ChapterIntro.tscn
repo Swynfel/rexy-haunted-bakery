@@ -14,7 +14,7 @@ thickness = 4
 
 [sub_resource type="Animation" id=2]
 resource_name = "hide"
-length = 2.8
+length = 2.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/Panel:anchor_bottom")
 tracks/0/interp = 1
@@ -22,7 +22,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 2.6 ),
+"times": PoolRealArray( 0, 1.2, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.0, 1.0, 0.063 ]
@@ -34,7 +34,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.6 ),
+"times": PoolRealArray( 0, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0 ]
@@ -46,7 +46,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.6 ),
+"times": PoolRealArray( 0, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0 ]
@@ -58,10 +58,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.2, 2.7 ),
+"times": PoolRealArray( 0, 1.9, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 1.0, 0.2 ]
+"values": [ 1.0, 1.0, 0.3 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("PanelContainer/Centered:anchor_bottom")
@@ -70,7 +70,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1.6, 2.6 ),
+"times": PoolRealArray( 0, 1.4, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.8, 0.8, 0.0 ]
@@ -82,7 +82,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 2.1, 2.6 ),
+"times": PoolRealArray( 0, 1.8, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
@@ -94,7 +94,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 2.1, 2.6 ),
+"times": PoolRealArray( 0, 1.8, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.58, 0.58, 1.0 ]
@@ -106,7 +106,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1.6, 2.6 ),
+"times": PoolRealArray( 0, 1.4, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.55, 0.55, 0.0 ]
@@ -118,7 +118,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1.6, 2.6 ),
+"times": PoolRealArray( 0, 1.4, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.55, 0.55, 0.0 ]
@@ -130,7 +130,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 1.2, 1.6 ),
+"times": PoolRealArray( 0, 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
@@ -142,7 +142,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 1.2, 1.6 ),
+"times": PoolRealArray( 0, 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -128.0, -128.0, 0.0 ]
@@ -154,7 +154,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 1.2, 1.6 ),
+"times": PoolRealArray( 0, 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 128.0, 128.0, 256 ]
@@ -166,7 +166,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 2.7, 2.8 ),
+"times": PoolRealArray( 0, 2.1, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -202,7 +202,7 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -214,7 +214,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -226,7 +226,7 @@ tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 2.8 ),
+"times": PoolRealArray( 2.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -252,6 +252,7 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="Control" parent="Window"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -264,21 +265,20 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Window/PanelContainer"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.063
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Centered" type="Control" parent="Window/PanelContainer"]
-anchor_right = 1.0
-anchor_bottom = 0.8
+anchor_right = 0.3
 
 [node name="Chapter" type="Label" parent="Window/PanelContainer/Centered"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
+rect_scale = Vector2( 0.5, 0.5 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
@@ -292,20 +292,17 @@ __meta__ = {
 [node name="Line" type="HSeparator" parent="Window/PanelContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -128.0
 margin_top = 96.0
-margin_right = 128.0
+margin_right = 256.0
 margin_bottom = 100.0
+rect_scale = Vector2( 1e-05, 1 )
 custom_styles/separator = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TimeValue" type="Label" parent="Window/PanelContainer"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_top = 0.55
-anchor_right = 0.58
-anchor_bottom = 0.55
+anchor_right = 1.0
 margin_top = 1.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )

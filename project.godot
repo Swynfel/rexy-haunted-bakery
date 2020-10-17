@@ -22,8 +22,9 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Nodes/Global/Global.tscn"
-CheatCode="*res://Scripts/Global/CheatCode.cs"
 GlobalWindow="*res://Nodes/Global/GlobalWindow.tscn"
+Gui="*res://Nodes/GUI/GUI.tscn"
+CheatCode="*res://Scripts/Global/CheatCode.cs"
 GlobalTimer="*res://Nodes/Global/InfoHeader.tscn"
 
 [display]
@@ -77,6 +78,11 @@ get={
 retry={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+retry_t={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"unicode":0,"echo":false,"script":null)
  ]
 }
 

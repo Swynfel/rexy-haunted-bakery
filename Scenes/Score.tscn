@@ -136,8 +136,6 @@ tracks/7/keys = {
 [node name="ScoreBoardLayer" type="CanvasLayer"]
 pause_mode = 2
 layer = 12
-offset = Vector2( 2, 2 )
-transform = Transform2D( 1, 0, 0, 1, 2, 2 )
 script = ExtResource( 5 )
 animationPath = NodePath("Window/Anim")
 
