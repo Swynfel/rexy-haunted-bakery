@@ -1,5 +1,6 @@
 # Godot
 .import/
+export_presets.cfg
 
 #Silent Wolf
 silent_wolf_config.json
