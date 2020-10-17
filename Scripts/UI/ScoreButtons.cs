@@ -27,6 +27,7 @@ public class ScoreButtons : VBoxContainer {
     }
     public void Menu() {
         Global.LoadMenu();
+        ScoreBoard.Instance.QueueFree();
     }
     public void Retry() {
         Global.LoadChapter(Global.Chapter);

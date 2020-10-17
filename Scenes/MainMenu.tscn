@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Nodes/GUI/ChapterButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Fonts/peepo/Peepo.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Scripts/VisualEffects/AutoAnimOnlyAtStart.cs" type="Script" id=11]
+[ext_resource path="res://Scripts/UI/Username.cs" type="Script" id=12]
+[ext_resource path="res://Scripts/UI/FetchToggle.cs" type="Script" id=13]
 
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 2.0
@@ -85,10 +87,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath("PanelContainer/Body/MainMenu/Online")
@@ -268,7 +270,7 @@ __meta__ = {
 }
 
 [node name="TitlePosition" type="Position2D" parent="Window/PanelContainer"]
-position = Vector2( 128, 14 )
+position = Vector2( 128, 24 )
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
@@ -318,8 +320,6 @@ __meta__ = {
 }
 
 [node name="MainMenu" type="VBoxContainer" parent="Window/PanelContainer/Body"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 49.0
 margin_top = 44.0
 margin_right = 207.0
@@ -377,6 +377,7 @@ __meta__ = {
 }
 
 [node name="OnlineOptions" type="VBoxContainer" parent="Window/PanelContainer/Body"]
+visible = false
 margin_left = 53.0
 margin_top = 21.0
 margin_right = 203.0
@@ -405,11 +406,12 @@ custom_constants/margin_top = -3
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = -3
 
-[node name="Button" type="CheckButton" parent="Window/PanelContainer/Body/OnlineOptions/Fetch"]
+[node name="Toggle" type="CheckButton" parent="Window/PanelContainer/Body/OnlineOptions/Fetch"]
 margin_top = -3.0
 margin_right = 150.0
 margin_bottom = 21.0
 text = "Fetch Leaderboard"
+script = ExtResource( 13 )
 
 [node name="Username" type="LineEdit" parent="Window/PanelContainer/Body/OnlineOptions"]
 margin_top = 61.0
@@ -426,6 +428,7 @@ align = 1
 max_length = 12
 placeholder_text = "Username"
 placeholder_alpha = 0.7
+script = ExtResource( 12 )
 
 [node name="Blank" type="Label" parent="Window/PanelContainer/Body/OnlineOptions"]
 margin_top = 80.0

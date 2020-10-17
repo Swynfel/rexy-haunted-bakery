@@ -74,6 +74,10 @@ public class Scores : Node {
 
     private int requestKey = 0;
     private async Task FetchChapter(ChapterId chapter) {
+        if (!Global.Online) {
+            GD.Print("Fetching info online not allowed");
+            return;
+        }
         requestKey++;
         int thisRequest = requestKey;
         await ToSignal((Godot.Object) SWS.Call("get_high_scores", 10, $"chapter-{(int) chapter}"), "sw_scores_received");

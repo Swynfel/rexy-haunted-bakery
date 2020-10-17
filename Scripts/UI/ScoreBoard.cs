@@ -34,16 +34,21 @@ public class ScoreBoard : AutoCanvasWindow {
         GetNode<Label>(chapterNamePath).Text = $"Chapter {(int) Global.Chapter} - {Global.Chapter.ToString()}";
         int centiseconds = (int) (100 * Global.Time);
         InfoHeader.TimeString(centiseconds);
-        NameField.Text = Global.PlayerName;
+        NameField.Text = Global.PlayerDisplayName;
         TimeField.Text = InfoHeader.TimeString(centiseconds);
         BestField.Text = "?:??.??";
         RankField.Text = "??";
+        // Exit early if not online
+        if (!Global.Online) {
+            Leaderboard.ShowNotAllowed();
+            return;
+        }
         // Optimistic Leaderboard
         Scores.ChapterScore score = Scores.Instance.GetCachedChapterScore(Global.Chapter);
-        score?.ForceInsertLine(Global.PlayerName, centiseconds);
+        score?.ForceInsertLine(Global.PlayerDisplayName, centiseconds);
         UpdateScoreBoard(score);
         // Delayed Leaderboard
-        if (centiseconds >= 100) {
+        if (centiseconds >= 100 && Global.PlayerName != "") {
             // No chapter can be finished in less than one second
             // We can assume we are actually debugging, and so it should not be sent
             await Scores.Instance.AddScoreLine(Global.Chapter, Global.PlayerName, centiseconds);
