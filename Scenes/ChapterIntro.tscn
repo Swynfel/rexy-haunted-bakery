@@ -252,7 +252,6 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="Control" parent="Window"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -265,20 +264,20 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Window/PanelContainer"]
 anchor_right = 1.0
-anchor_bottom = 0.063
+anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Centered" type="Control" parent="Window/PanelContainer"]
-anchor_right = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.8
 
 [node name="Chapter" type="Label" parent="Window/PanelContainer/Centered"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
-rect_scale = Vector2( 0.5, 0.5 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
@@ -292,17 +291,19 @@ __meta__ = {
 [node name="Line" type="HSeparator" parent="Window/PanelContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
+margin_left = -128.0
 margin_top = 96.0
-margin_right = 256.0
+margin_right = 128.0
 margin_bottom = 100.0
-rect_scale = Vector2( 1e-05, 1 )
 custom_styles/separator = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TimeValue" type="Label" parent="Window/PanelContainer"]
-anchor_right = 1.0
+anchor_top = 0.55
+anchor_right = 0.58
+anchor_bottom = 0.55
 margin_top = 1.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )

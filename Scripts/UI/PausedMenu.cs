@@ -28,19 +28,13 @@ public class PausedMenu : Control {
         GUI.Instance.HideMenu();
     }
     public void RetryChapter() {
-        Global.Level = 1;
-        GetTree().ChangeScene(Global.CHAPTER_INTRO);
+        Global.LoadChapter(Global.Chapter);
         GUI.Instance.HideMenuInstantly();
-        Global.Time = 0;
     }
     public void OnlineOptions() {
         GD.Print("[TODO]: Open Online Options");
     }
     public void Menu() {
-        Global.Level = 1;
-        Global.Chapter = Global.Chapter.Next();
-        GetTree().ChangeScene(Global.CHAPTER_INTRO);
-        ScoreBoard.Instance.QueueFree();
-        Global.Time = 0;
+        Global.LoadMenu();
     }
 }

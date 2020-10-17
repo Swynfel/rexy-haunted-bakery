@@ -15,20 +15,15 @@ public class ScoreButtons : VBoxContainer {
     }
 
     public void Menu() {
-        GD.Print("[TODO]: Open Menu");
+        Global.LoadMenu();
     }
     public void Retry() {
-        Global.Level = 1;
-        GetTree().ChangeScene(Global.CHAPTER_INTRO);
+        Global.LoadChapter(Global.Chapter);
         ScoreBoard.Instance.QueueFree();
-        Global.Time = 0;
     }
     public void Continue() {
-        Global.Level = 1;
-        Global.Chapter = Global.Chapter.Next();
-        GetTree().ChangeScene(Global.CHAPTER_INTRO);
+        Global.LoadChapter(Global.Chapter.Next());
         ScoreBoard.Instance.QueueFree();
-        Global.Time = 0;
     }
 
 }
