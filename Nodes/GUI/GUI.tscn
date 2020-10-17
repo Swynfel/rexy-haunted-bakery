@@ -6,7 +6,7 @@
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/UI/PausedMenu.cs" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=1]
 size = 9
 outline_size = 1
 outline_color = Color( 1, 1, 1, 0.498039 )
@@ -14,28 +14,28 @@ extra_spacing_top = -5
 extra_spacing_bottom = -3
 font_data = ExtResource( 3 )
 
-[sub_resource type="InputEventAction" id=1]
+[sub_resource type="InputEventAction" id=2]
 action = "ui_cancel"
 pressed = true
 
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=4]
 action = "retry"
 pressed = true
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
-[sub_resource type="InputEventAction" id=9]
+[sub_resource type="InputEventAction" id=6]
 action = "retry_t"
 pressed = true
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 9 )
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=8]
 resource_name = "hide"
 length = 0.25
 step = 0.01
@@ -114,7 +114,7 @@ tracks/5/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=9]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -266,7 +266,7 @@ margin_top = 171.0
 margin_right = 83.0
 margin_bottom = 184.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.262745, 0.113725, 0.380392, 1 )
 text = "Paused"
 align = 1
@@ -279,7 +279,7 @@ rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 2 )
+shortcut = SubResource( 3 )
 text = "Resume (escape)"
 
 [node name="RetryLevel" type="Button" parent="Window/Container/Paused/List"]
@@ -290,7 +290,7 @@ rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 8 )
+shortcut = SubResource( 5 )
 text = "Retry Level (R)"
 
 [node name="RetryChapter" type="Button" parent="Window/Container/Paused/List"]
@@ -301,10 +301,11 @@ rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 4 )
+shortcut = SubResource( 7 )
 text = "Retry Chapter (T)"
 
 [node name="Online" type="Button" parent="Window/Container/Paused/List"]
+visible = false
 margin_top = 245.0
 margin_right = 128.0
 margin_bottom = 260.0
@@ -325,5 +326,5 @@ action_mode = 0
 text = "Menu"
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-anims/hide = SubResource( 11 )
-anims/show-paused = SubResource( 12 )
+anims/hide = SubResource( 8 )
+anims/show-paused = SubResource( 9 )

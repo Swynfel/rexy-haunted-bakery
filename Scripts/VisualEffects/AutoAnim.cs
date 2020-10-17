@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public class AutoAnim : KinematicBody2D {
+public class AutoAnim : Node {
     [Export] NodePath Path;
     [Export] string Animation;
     public override void _Ready() {

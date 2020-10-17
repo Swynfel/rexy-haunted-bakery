@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
@@ -6,9 +6,232 @@
 [ext_resource path="res://Assets/Theme/fonts/peepo-18.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/VisualEffects/AutoAnim.cs" type="Script" id=5]
 [ext_resource path="res://Scripts/UI/MainMenu.cs" type="Script" id=6]
-[ext_resource path="res://Scripts/UI/MainMenuOnlineOptionsButton.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/UI/ActivateTransitionButton.cs" type="Script" id=7]
 [ext_resource path="res://Scripts/UI/MainMenuQuitButton.cs" type="Script" id=8]
 [ext_resource path="res://Nodes/GUI/ChapterButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/peepo/Peepo.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scripts/VisualEffects/AutoAnimOnlyAtStart.cs" type="Script" id=11]
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 2.0
+bg_color = Color( 0.729412, 0.411765, 0.207843, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 9
+extra_spacing_top = -4
+font_data = ExtResource( 10 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "ui_cancel"
+pressed = true
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "main_to_online"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer/TitlePosition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 24 ), Vector2( 128, 24 ), Vector2( 128, 14 ), Vector2( 128, 14 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PanelContainer/Body/MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PanelContainer/Body/MainMenu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PanelContainer/Body/OnlineOptions:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PanelContainer/Body/OnlineOptions:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("PanelContainer/Body/MainMenu/Online")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("PanelContainer/Body/OnlineOptions/Username")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PanelContainer/Body/OnlineOptions:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PanelContainer/TitlePosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 72 ), Vector2( 128, 72 ), Vector2( 128, 24 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PanelContainer/TitlePosition:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PanelContainer/TitlePosition/Title/Text:bbcode_text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "[center][color=green]Rexy[/color]'s [wave amp=0 freq=4]Haunted[/wave] Bakery[/center]", "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]", "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PanelContainer/Body/MainMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PanelContainer/Body/MainMenu:rect_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 158, 72 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PanelContainer/Body/MainMenu:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 49, 44 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("PanelContainer/Body/MainMenu/Online")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
 
 [node name="MainMenuLayer" type="CanvasLayer"]
 pause_mode = 2
@@ -44,28 +267,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="Window/PanelContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 4
-alignment = 1
+[node name="TitlePosition" type="Position2D" parent="Window/PanelContainer"]
+position = Vector2( 128, 14 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+Path = NodePath("../../Anim")
+Animation = "start"
+
+[node name="Title" type="Control" parent="Window/PanelContainer/TitlePosition"]
+anchor_top = 0.35
+anchor_bottom = 0.35
+margin_left = -128.0
+margin_top = -4.8
+margin_right = 128.0
+margin_bottom = 35.2
+rect_min_size = Vector2( 256, 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Control" parent="Window/PanelContainer/VBox"]
-margin_top = 38.0
-margin_right = 256.0
-margin_bottom = 78.0
-rect_min_size = Vector2( 256, 40 )
-
-[node name="Rexy" parent="Window/PanelContainer/VBox/Title" instance=ExtResource( 3 )]
+[node name="Rexy" parent="Window/PanelContainer/TitlePosition/Title" instance=ExtResource( 3 )]
 position = Vector2( 53, 11 )
 script = ExtResource( 5 )
 Path = NodePath("../../Title/Rexy/Anim")
 Animation = "idle"
 
-[node name="Text" type="RichTextLabel" parent="Window/PanelContainer/VBox/Title"]
+[node name="Text" type="RichTextLabel" parent="Window/PanelContainer/TitlePosition/Title"]
 anchor_top = 0.4
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,24 +309,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Online" type="Button" parent="Window/PanelContainer/VBox"]
-margin_left = 58.0
-margin_top = 82.0
-margin_right = 198.0
-margin_bottom = 98.0
-rect_min_size = Vector2( 140, 16 )
+[node name="Body" type="Control" parent="Window/PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MainMenu" type="VBoxContainer" parent="Window/PanelContainer/Body"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 49.0
+margin_top = 44.0
+margin_right = 207.0
+margin_bottom = 116.0
 size_flags_horizontal = 4
-text = "Online Options"
-script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Levels" type="GridContainer" parent="Window/PanelContainer/VBox"]
-margin_left = 49.0
-margin_top = 102.0
-margin_right = 207.0
-margin_bottom = 134.0
+[node name="Online" type="Button" parent="Window/PanelContainer/Body/MainMenu"]
+margin_right = 158.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+text = "Leaderboard / Online Config."
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+animator = NodePath("../../../../Anim")
+animation = "main_to_online"
+
+[node name="Levels" type="GridContainer" parent="Window/PanelContainer/Body/MainMenu"]
+margin_top = 20.0
+margin_right = 158.0
+margin_bottom = 52.0
 size_flags_horizontal = 4
 custom_constants/vseparation = 4
 custom_constants/hseparation = 4
@@ -106,27 +354,105 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" parent="Window/PanelContainer/VBox/Levels" instance=ExtResource( 9 )]
+[node name="Button" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 
-[node name="Button2" parent="Window/PanelContainer/VBox/Levels" instance=ExtResource( 9 )]
+[node name="Button2" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 54.0
 margin_right = 104.0
 
-[node name="Button3" parent="Window/PanelContainer/VBox/Levels" instance=ExtResource( 9 )]
+[node name="Button3" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 108.0
 margin_right = 158.0
 
-[node name="Quit" type="Button" parent="Window/PanelContainer/VBox"]
-margin_left = 58.0
-margin_top = 138.0
-margin_right = 198.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 140, 16 )
-size_flags_horizontal = 4
+[node name="Quit" type="Button" parent="Window/PanelContainer/Body/MainMenu"]
+margin_top = 56.0
+margin_right = 158.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
 text = "Quit"
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OnlineOptions" type="VBoxContainer" parent="Window/PanelContainer/Body"]
+margin_left = 53.0
+margin_top = 21.0
+margin_right = 203.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Window/PanelContainer/Body/OnlineOptions"]
+margin_right = 150.0
+margin_bottom = 31.0
+custom_constants/line_spacing = 4
+text = "This game has a leaderboard. Add your username if you want to participate."
+align = 3
+autowrap = true
+
+[node name="Fetch" type="MarginContainer" parent="Window/PanelContainer/Body/OnlineOptions"]
+margin_top = 37.0
+margin_right = 150.0
+margin_bottom = 55.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = -3
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = -3
+
+[node name="Button" type="CheckButton" parent="Window/PanelContainer/Body/OnlineOptions/Fetch"]
+margin_top = -3.0
+margin_right = 150.0
+margin_bottom = 21.0
+text = "Fetch Leaderboard"
+
+[node name="Username" type="LineEdit" parent="Window/PanelContainer/Body/OnlineOptions"]
+margin_top = 61.0
+margin_right = 150.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 13 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.35
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
+align = 1
+max_length = 12
+placeholder_text = "Username"
+placeholder_alpha = 0.7
+
+[node name="Blank" type="Label" parent="Window/PanelContainer/Body/OnlineOptions"]
+margin_top = 80.0
+margin_right = 150.0
+margin_bottom = 101.0
+text = "(Leave your username blank 
+to not send your score.)"
+align = 1
+autowrap = true
+
+[node name="Confirm" type="Button" parent="Window/PanelContainer/Body/OnlineOptions"]
+margin_top = 107.0
+margin_right = 150.0
+margin_bottom = 123.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+action_mode = 0
+shortcut = SubResource( 7 )
+text = "Confirm (escape/enter)"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+animator = NodePath("../../../../Anim")
+animation = "main_to_online"
+isReversed = true
+
 [node name="Anim" type="AnimationPlayer" parent="Window"]
+anims/main_to_online = SubResource( 5 )
+anims/start = SubResource( 4 )
