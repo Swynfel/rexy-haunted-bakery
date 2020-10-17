@@ -123,7 +123,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "start"
-length = 5.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
 tracks/0/interp = 1
@@ -131,7 +131,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4.4, 4.5 ),
+"times": PoolRealArray( 0, 3.4, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true ]
@@ -143,7 +143,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
@@ -155,7 +155,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 5 ),
+"times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 128, 72 ), Vector2( 128, 72 ), Vector2( 128, 24 ) ]
@@ -167,7 +167,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2, 5 ),
+"times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -179,7 +179,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2, 5 ),
+"times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "[center][color=green]Rexy[/color]'s [wave amp=0 freq=4]Haunted[/wave] Bakery[/center]", "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]", "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]" ]
@@ -191,7 +191,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 4.5, 5 ),
+"times": PoolRealArray( 3.5, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -203,7 +203,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 5 ),
+"times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 158, 72 ) ]
@@ -215,7 +215,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 5 ),
+"times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 49, 44 ) ]
@@ -227,7 +227,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 5 ),
+"times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -270,7 +270,8 @@ __meta__ = {
 }
 
 [node name="TitlePosition" type="Position2D" parent="Window/PanelContainer"]
-position = Vector2( 128, 24 )
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 128, 72 )
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
@@ -304,7 +305,7 @@ margin_top = 0.299999
 margin_bottom = 0.999996
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]"
+bbcode_text = "[center][color=green]Rexy[/color]'s [wave amp=0 freq=4]Haunted[/wave] Bakery[/center]"
 text = "Rexy's Haunted Bakery"
 scroll_active = false
 __meta__ = {
@@ -320,6 +321,7 @@ __meta__ = {
 }
 
 [node name="MainMenu" type="VBoxContainer" parent="Window/PanelContainer/Body"]
+visible = false
 margin_left = 49.0
 margin_top = 44.0
 margin_right = 207.0
@@ -378,6 +380,7 @@ __meta__ = {
 
 [node name="OnlineOptions" type="VBoxContainer" parent="Window/PanelContainer/Body"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 53.0
 margin_top = 21.0
 margin_right = 203.0

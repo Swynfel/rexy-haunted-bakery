@@ -2,8 +2,6 @@ using System;
 using Godot;
 
 public class PressureButton : StaticBody2D {
-    [Export] NodePath spritePath;
-    [Export] NodePath interactPath;
     [Export] bool staysPressed;
     public bool Pressed = false;
     [Signal] public delegate void Toggled(bool toggle);
@@ -13,9 +11,9 @@ public class PressureButton : StaticBody2D {
     public void Release() {
     }
     public override void _Ready() {
-        interact = GetNode<Area2D>(interactPath);
+        interact = GetNode<Area2D>("Interact");
         interact.Connect("body_entered", this, nameof(BodyEntered));
-        sprite = GetNode<Sprite>(spritePath);
+        sprite = GetNode<Sprite>("Sprite");
     }
 
     public override void _PhysicsProcess(float delta) {
