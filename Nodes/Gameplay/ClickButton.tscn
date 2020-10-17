@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=1]
+
+[node name="KeepPressureButton" instance=ExtResource( 1 )]
+spritePath = NodePath("../KeepPressureButton/Sprite")
+interactPath = NodePath("../KeepPressureButton/Interact")
+staysPressed = true
+
+[node name="Sprite" parent="." index="1"]
+frame = 2

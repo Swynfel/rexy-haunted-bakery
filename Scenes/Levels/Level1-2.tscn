@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/instructions_buttons.png" type="Texture" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/Gameplay/ClickButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -95,3 +96,6 @@ position = Vector2( 32, 24 )
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 2
+
+[node name="KeepPressureButton" parent="." instance=ExtResource( 6 )]
+position = Vector2( 32, 40 )
