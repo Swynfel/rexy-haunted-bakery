@@ -1,7 +1,5 @@
 # Godot
 .import/
-export.cfg
-export_presets.cfg
 
 # Mono
 .mono/
