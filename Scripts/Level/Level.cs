@@ -3,6 +3,7 @@ using Godot;
 
 public class Level : Node2D {
     private bool postInit = false;
+    private bool ready = true;
     public override void _Ready() {
         if (Global.Chapter == ChapterId.NONE) {
             DisplayDebugLevel();
@@ -15,13 +16,19 @@ public class Level : Node2D {
         Global.Level = parts[1].ToInt();
     }
     public void FinishLevel() {
-        Global.Level++;
-        GetTree().ChangeScene(Global.CurrentScene());
+        if (ready) {
+            ready = false;
+            Global.Level++;
+            GetTree().ChangeScene(Global.CurrentScene());
+        }
     }
 
     public void FinishChapter() {
-        ScoreBoard scoreBoard = (ScoreBoard) ResourceLoader.Load<PackedScene>("res://Scenes/Score.tscn").Instance();
-        GetTree().Root.AddChild(scoreBoard);
+        if (ready) {
+            ready = false;
+            ScoreBoard scoreBoard = (ScoreBoard) ResourceLoader.Load<PackedScene>("res://Scenes/Score.tscn").Instance();
+            GetTree().Root.AddChild(scoreBoard);
+        }
     }
 
     public override void _Process(float delta) {

@@ -13,14 +13,16 @@ public class InfoHeader : HBoxContainer {
         levelLabel.Text = Global.LevelFullName();
     }
 
+    public static string TimeString(int time) {
+        int minutes = (int) (time / 6000);
+        time -= 6000 * minutes;
+        int seconds = (int) (time / 100);
+        time -= 100 * seconds;
+        return $"{minutes}:{seconds:00}.{time:00}";
+    }
+
     private void UpdateTime() {
-        float time = Global.Time;
-        int minutes = (int) (time / 60);
-        time -= 60 * minutes;
-        int seconds = (int) (time);
-        time -= seconds;
-        int dec = (int) (time * 100);
-        timeLabel.Text = $"{minutes}:{seconds:00}.{dec:00}";
+        timeLabel.Text = TimeString((int) (100 * Global.Time));
     }
 
     public override void _PhysicsProcess(float delta) {

@@ -7,6 +7,7 @@ public class Global : Node {
     public static ChapterId Chapter { get; set; } = ChapterId.NONE;
     public static int Level { get; set; } = 99;
     public static float Time { get; set; } = 0;
+    public static string PlayerName { get; set; } = "PlayerName";
 
     public static string LevelFullName() {
         return $"{Chapter}: Level {(int) Chapter}-{Level}";

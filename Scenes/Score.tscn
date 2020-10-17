@@ -138,6 +138,11 @@ pause_mode = 2
 layer = 12
 script = ExtResource( 5 )
 animationPath = NodePath("Window/Anim")
+leaderboardPath = NodePath("Window/PanelContainer/Margin/VBox/HBox/Left/ScoreBoard")
+namePath = NodePath("Window/PanelContainer/Margin/VBox/HBox/Right/Name")
+timePath = NodePath("Window/PanelContainer/Margin/VBox/HBox/Right/Values/TimeValue")
+bestPath = NodePath("Window/PanelContainer/Margin/VBox/HBox/Right/Values/BestValue")
+rankPath = NodePath("Window/PanelContainer/Margin/VBox/HBox/Right/Values/RankValue")
 
 [node name="Window" type="Control" parent="."]
 anchor_right = 1.0
