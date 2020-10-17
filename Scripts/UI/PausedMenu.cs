@@ -29,7 +29,6 @@ public class PausedMenu : Control {
     }
     public void RetryChapter() {
         Global.LoadChapter(Global.Chapter);
-        GUI.Instance.HideMenuInstantly();
     }
     public void OnlineOptions() {
         GD.Print("[TODO]: Open Online Options");

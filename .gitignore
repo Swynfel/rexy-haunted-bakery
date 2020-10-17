@@ -1,6 +1,9 @@
 # Godot
 .import/
 
+#Silent Wolf
+silent_wolf_config.json
+
 # Mono
 .mono/
 data_*/
