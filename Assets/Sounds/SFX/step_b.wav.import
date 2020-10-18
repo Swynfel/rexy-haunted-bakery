@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/step_b.wav-14845bf64c12c1d400c9627bb545c5bd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/step_b.wav"
+dest_files=[ "res://.import/step_b.wav-14845bf64c12c1d400c9627bb545c5bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

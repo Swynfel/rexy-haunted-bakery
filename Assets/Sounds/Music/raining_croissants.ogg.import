@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/raining_croissants.ogg-c8b8e1351cb53b3d86ae0562a903fdac.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Music/raining_croissants.ogg"
+dest_files=[ "res://.import/raining_croissants.ogg-c8b8e1351cb53b3d86ae0562a903fdac.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -33,6 +33,7 @@ GlobalTheme="*res://Nodes/Global/GlobalTheme.tscn"
 Gui="*res://Nodes/GUI/GUI.tscn"
 CheatCode="*res://Scripts/Global/CheatCode.cs"
 GlobalTimer="*res://Nodes/Global/InfoHeader.tscn"
+MainMusic="*res://Nodes/Global/MainMusic.tscn"
 
 [display]
 
