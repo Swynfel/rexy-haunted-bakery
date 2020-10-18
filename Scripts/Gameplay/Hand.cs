@@ -17,7 +17,7 @@ public class Hand : Position2D {
     public override void _Process(float delta) {
         base._Process(delta);
         if (NearbyOven != null && Input.IsActionJustPressed("get")) {
-            HoldBaguette();
+            HoldBread(NearbyOven.Bread);
         } else if (holdingBread) {
             if (!IsInstanceValid(bread)) {
                 holdingBread = false;
@@ -32,7 +32,6 @@ public class Hand : Position2D {
                 bread.Place();
             }
             if (Input.IsActionJustReleased("use") && placingBread) {
-                GD.Print("Stop place bread");
                 bread.StopPlace();
             }
         }
@@ -55,13 +54,13 @@ public class Hand : Position2D {
         }
     }
 
-    public void HoldBaguette() {
+    public void HoldBread(Bread.Id breadId) {
         if (holdingBread) {
             bread.QueueFree();
         } else {
             holdingBread = true;
         }
-        bread = Baguette.Instance();
+        bread = Bread.Instance(breadId);
         GetNode("../../").AddChild(bread);
         bread.Connect(nameof(Bread.Placed), this, nameof(Placed));
         bread.Intangible();

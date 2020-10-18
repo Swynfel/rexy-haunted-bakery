@@ -2,10 +2,18 @@ using System;
 using Godot;
 
 public abstract class Bread : RigidBody2D {
+    public static Bread Instance(Id breadId) {
+        return (Bread) ResourceLoader.Load<PackedScene>($"res://Nodes/Gameplay/Breads/{breadId}.tscn").Instance();
+    }
+    public enum Id {
+        Loaf,
+        Baguette,
+    }
     [Export] NodePath areaPath;
     [Signal] public delegate void Placed();
     public AnimationPlayer Anim;
     public Area2D Area;
+    public Id BreadId;
     public bool IsPlaced;
     public bool IsBeingPlaced;
     public override void _Ready() {
@@ -25,10 +33,11 @@ public abstract class Bread : RigidBody2D {
     public bool IsTangible { get; private set; } = true;
     private uint cachedMask;
     private uint cachedLayer;
+    protected abstract Id GetBreadId();
     protected abstract void PlaceInternal();
     protected abstract void PlacePhysicsProcess(float delta);
     protected abstract void StopPlaceInternal();
-    private const float BASE_OFFSET = 32f;
+    private const float BASE_OFFSET = 8f;
     public virtual Vector2 OffsetToRexy(bool isFacingLeft) {
         return new Vector2((isFacingLeft ? -1f : +1f) * BASE_OFFSET, 0);
     }

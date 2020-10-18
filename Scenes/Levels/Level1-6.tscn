@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Nodes/Gameplay/ToggleTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=2]
-[ext_resource path="res://Nodes/Gameplay/Oven.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Nodes/Gameplay/ClickButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Gameplay/Ovens/LoafOven.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/GUI/Instruction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Sprites/instructions_buttons.png" type="Texture" id=6]
-[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=8]
+[ext_resource path="res://Nodes/GUI/InstructionWithArrow.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -82,30 +83,60 @@ use_parent_material = true
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 1, 0, 65551, 1, 0, 131072, 1, 0, 131087, 1, 0, 196608, 1, 0, 196623, 1, 0, 262144, 1, 0, 262159, 1, 0, 327680, 1, 0, 327695, 1, 0, 393216, 1, 0, 393231, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458759, 1, 0, 458760, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524295, 1, 0, 524296, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65551, 1, 0, 131072, 1, 0, 131087, 1, 0, 196608, 1, 0, 196623, 1, 0, 262144, 1, 0, 262159, 1, 0, 327680, 1, 0, 327695, 1, 0, 393216, 1, 0, 393231, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0 )
 
 [node name="Rexy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 40, 104 )
+
+[node name="Exit" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 104 )
+
+[node name="Exit2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 88 )
+
+[node name="Exit3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 72 )
+
+[node name="PressureButton" parent="." instance=ExtResource( 6 )]
 position = Vector2( 128, 104 )
 
-[node name="Help" type="Sprite" parent="."]
-position = Vector2( 32, 64 )
-texture = ExtResource( 6 )
-vframes = 2
-hframes = 2
-
-[node name="Goal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 224, 96 )
-
-[node name="Oven" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 104 )
-
-[node name="Button" parent="." instance=ExtResource( 4 )]
-position = Vector2( 200, 168 )
-
 [node name="ToggleTile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 56, 168 )
-buttonPath = NodePath("../Button")
+position = Vector2( 184, 72 )
+buttonPath = NodePath("../PressureButton")
+isOpposite = true
 
 [node name="ToggleTile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 56, 152 )
-buttonPath = NodePath("../Button")
+position = Vector2( 184, 56 )
+buttonPath = NodePath("../PressureButton")
+isOpposite = true
+
+[node name="ToggleTile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, 88 )
+buttonPath = NodePath("../PressureButton")
+isOpposite = true
+
+[node name="ToggleTile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, 104 )
+buttonPath = NodePath("../PressureButton")
+isOpposite = true
+
+[node name="LoafOven" parent="." instance=ExtResource( 3 )]
+position = Vector2( 72, 104 )
+
+[node name="Instructions" parent="." instance=ExtResource( 9 )]
+margin_left = 40.0
+margin_top = 48.0
+margin_right = 104.0
+margin_bottom = 80.0
+text = "E
+Oven"
+
+[node name="Instructions2" parent="." instance=ExtResource( 9 )]
+margin_left = 96.0
+margin_top = 56.0
+margin_right = 160.0
+margin_bottom = 88.0
+text = "R
+Place"
+
+[node name="Instructions3" parent="." instance=ExtResource( 4 )]

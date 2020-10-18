@@ -2,22 +2,20 @@ using System;
 using Godot;
 
 public class Baguette : Bread {
-    public static Baguette Instance() {
-        return (Baguette) ResourceLoader.Load<PackedScene>("res://Nodes/Gameplay/Bread/Baguette.tscn").Instance();
-    }
     [Export] public float Length;
-    [Export] public float GrowDuration;
-    private float growthTime;
+
+    protected override Id GetBreadId() {
+        return Id.Baguette;
+    }
 
     protected override void PlaceInternal() {
-        Anim.Play("length");
+        Anim.Play("place");
         GravityScale = 0f;
         CallDeferred("set", "mode", RigidBody2D.ModeEnum.Kinematic);
     }
 
     protected override void PlacePhysicsProcess(float delta) {
-        growthTime += delta;
-        if (growthTime >= GrowDuration || Area.GetOverlappingBodies().Count > 0) {
+        if (IsAreaOverlapping) {
             StopPlace();
         }
     }

@@ -2,15 +2,14 @@ using System;
 using Godot;
 
 public class Oven : StaticBody2D {
-    [Export] NodePath spritePath;
-    [Export] NodePath interactPath;
+    [Export] public Bread.Id Bread;
     Area2D interact;
     ShaderMaterial shader;
     public override void _Ready() {
-        interact = GetNode<Area2D>(interactPath);
+        interact = GetNode<Area2D>("Interact");
+        shader = (ShaderMaterial) GetNode<Sprite>("Sprite").Material;
         interact.Connect("body_entered", this, nameof(BodyEntered));
         interact.Connect("body_exited", this, nameof(BodyExited));
-        shader = (ShaderMaterial) GetNode<Sprite>(spritePath).Material;
     }
 
 

@@ -4,46 +4,49 @@
 [ext_resource path="res://Scripts/Gameplay/PressureButton.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Shaders/oven.shader" type="Shader" id=3]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.333333, 0.807407, 1 )
 colors = PoolColorArray( 0.487305, 0, 0, 1, 0.745117, 0.179765, 0.0640335, 1, 0.8125, 0.649345, 0.21582, 1, 0.819336, 0.761926, 0.102417, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.110779, 0.824285, 0.859375, 1, 0.547333, 0.824219, 0.795073, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 3 )
 shader_param/symbol_color = Color( 0.505882, 0.580392, 0.572549, 1 )
 shader_param/speed = 2.0
 shader_param/selected = 0.0
-shader_param/heat_color = SubResource( 3 )
-shader_param/select_color = SubResource( 5 )
+shader_param/heat_color = SubResource( 2 )
+shader_param/select_color = SubResource( 4 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 2, 3 )
 
 [node name="PressureButton" type="StaticBody2D"]
 script = ExtResource( 2 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PoolVector2Array( 5, 8, 2, 5, -2, 5, -5, 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 6 )
+material = SubResource( 5 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 
 [node name="Interact" type="Area2D" parent="."]
+monitorable = false
 collision_layer = 32
 collision_mask = 96
 
 [node name="AreaSquare" type="CollisionShape2D" parent="Interact"]
+visible = false
 position = Vector2( 0, 5 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )

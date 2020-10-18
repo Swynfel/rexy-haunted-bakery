@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Theme/fonts/peepo-9.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Instruction" type="Label"]
+margin_left = 56.0
+margin_top = 112.0
+margin_right = 200.0
+margin_bottom = 144.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Loafs of bread are heavy
+They can press buttons"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

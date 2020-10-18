@@ -88,6 +88,14 @@ retry_t={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Base"
+2d_physics/layer_2="Bread"
+2d_physics/layer_5="Interactable"
+2d_physics/layer_6="Rexy"
+2d_physics/layer_7="Heavy"
+
 [physics]
 
 2d/default_gravity=300

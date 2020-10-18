@@ -32,9 +32,8 @@ shader_param/select_color = SubResource( 5 )
 extents = Vector2( 12, 12 )
 
 [node name="Oven" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
-spritePath = NodePath("Sprite")
-interactPath = NodePath("Interact")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -45,10 +44,9 @@ material = SubResource( 6 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 4
-frame = 3
 
 [node name="Interact" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 16
 collision_mask = 32
 
 [node name="AreaSquare" type="CollisionShape2D" parent="Interact"]

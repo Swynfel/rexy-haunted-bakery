@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Nodes/Gameplay/ToggleTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=2]
-[ext_resource path="res://Nodes/Gameplay/ClickButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/Gameplay/OnceButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/GUI/InstructionWithArrow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=7]
-
-
+[ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -82,34 +82,74 @@ use_parent_material = true
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65551, 1, 0, 131072, 1, 0, 131087, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196613, 1, 0, 196614, 1, 0, 196617, 1, 0, 196618, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262149, 1, 0, 262154, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327685, 1, 0, 327687, 1, 0, 327688, 1, 0, 327690, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393221, 1, 0, 393226, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458757, 1, 0, 458758, 1, 0, 458761, 1, 0, 458762, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524293, 1, 0, 524298, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589831, 1, 0, 589832, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 1, 0, 65551, 1, 0, 131072, 1, 0, 131087, 1, 0, 196608, 1, 0, 196623, 1, 0, 262144, 1, 0, 262159, 1, 0, 327680, 1, 0, 327683, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 393216, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 458752, 1, 0, 458753, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0 )
 
 [node name="Rexy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 128, 168 )
+position = Vector2( 88, 136 )
 
 [node name="Exit" parent="." instance=ExtResource( 6 )]
 position = Vector2( 232, 40 )
 
 [node name="Exit2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 232, 24 )
+position = Vector2( 232, 72 )
 
-[node name="KeepPressureButton" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 40 )
+[node name="Exit3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 232, 56 )
 
-[node name="ToggleTile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 88, 40 )
-buttonPath = NodePath("../../Level1-4/KeepPressureButton")
+[node name="OnceTile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 72, 88 )
+buttonPath = NodePath("../OnceButton")
 
-[node name="ToggleTile2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 88, 24 )
-buttonPath = NodePath("../../Level1-4/KeepPressureButton")
+[node name="OnceTile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 104, 88 )
+buttonPath = NodePath("../OnceButton")
 
-[node name="ToggleTile3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 168, 24 )
-buttonPath = NodePath("../../Level1-4/KeepPressureButton")
-isOpposite = true
+[node name="OnceTile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136, 88 )
+buttonPath = NodePath("../OnceButton")
 
-[node name="ToggleTile4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 168, 40 )
-buttonPath = NodePath("../../Level1-4/KeepPressureButton")
-isOpposite = true
+[node name="OnceTile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 88 )
+buttonPath = NodePath("../OnceButton")
+
+[node name="OnceTile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, 88 )
+buttonPath = NodePath("../OnceButton")
+
+[node name="KeepTile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 88, 88 )
+buttonPath = NodePath("../PressureButton")
+
+[node name="KeepTile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 88 )
+buttonPath = NodePath("../PressureButton")
+
+[node name="KeepTile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 152, 88 )
+buttonPath = NodePath("../PressureButton")
+
+[node name="KeepTile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, 88 )
+buttonPath = NodePath("../PressureButton")
+
+[node name="Instructions" parent="." instance=ExtResource( 5 )]
+margin_left = 152.0
+margin_top = 88.0
+margin_right = 216.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 32, 40 )
+text = "Once"
+
+[node name="OnceButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 184, 136 )
+
+[node name="Instructions2" parent="." instance=ExtResource( 5 )]
+margin_left = 104.0
+margin_top = 88.0
+margin_right = 168.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 32, 40 )
+text = "Keep"
+
+[node name="PressureButton" parent="." instance=ExtResource( 8 )]
+position = Vector2( 136, 136 )
