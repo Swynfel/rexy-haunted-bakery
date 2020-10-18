@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Nodes/Gameplay/ToggleTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=2]
+[ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/Gameplay/Ovens/LoafOven.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/GUI/Instruction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=8]
+[ext_resource path="res://Nodes/Gameplay/Ghosts/Ghost.tscn" type="PackedScene" id=9]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="TileSet" id=3]
+1/name = "tiles.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 16, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 1 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "tiles.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 16, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tiles.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 16, 16, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 2 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+
+[node name="Level1-8" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Platforms" type="TileMap" parent="."]
+show_behind_parent = true
+use_parent_material = true
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 1, 0, 65551, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 262144, 1, 0, 262159, 1, 0, 327680, 1, 0, 327695, 1, 0, 393216, 1, 0, 393223, 1, 0, 393224, 1, 0, 393231, 1, 0, 458752, 1, 0, 458767, 1, 0, 524288, 1, 0, 524303, 1, 0, 589824, 1, 0, 589839, 1, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0 )
+
+[node name="Rexy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 128, 152 )
+
+[node name="Goal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 128, 80 )
+
+[node name="LeftLoadOven" parent="." instance=ExtResource( 4 )]
+position = Vector2( 56, 152 )
+
+[node name="LeftButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 152 )
+
+[node name="LeftTile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 72, 120 )
+buttonPath = NodePath("../RightButton")
+
+[node name="LeftTile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 88, 120 )
+buttonPath = NodePath("../RightButton")
+
+[node name="RightLoafOven" parent="." instance=ExtResource( 4 )]
+position = Vector2( 200, 152 )
+
+[node name="RightButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 152 )
+
+[node name="RightTile" parent="." instance=ExtResource( 1 )]
+position = Vector2( 184, 120 )
+buttonPath = NodePath("../LeftButton")
+
+[node name="RightTile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 120 )
+buttonPath = NodePath("../LeftButton")
+
+[node name="Instructions" parent="." instance=ExtResource( 6 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 192.0
+margin_bottom = 32.0
+text = "Ghosts love eating your bread"
+
+[node name="Ghost" parent="." instance=ExtResource( 9 )]
+position = Vector2( 40, 96 )
+
+[node name="Ghost2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 216, 96 )

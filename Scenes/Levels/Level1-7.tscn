@@ -6,7 +6,7 @@
 [ext_resource path="res://Nodes/Gameplay/OnceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/GUI/Instruction.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -73,7 +73,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 3/z_index = 0
 
-[node name="Level1-6" type="Node2D"]
+[node name="Level1-7" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="Platforms" type="TileMap" parent="."]
@@ -87,19 +87,16 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="Rexy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
 
-[node name="Goal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 224, 96 )
-
 [node name="Button" parent="." instance=ExtResource( 4 )]
 position = Vector2( 200, 168 )
 
 [node name="ToggleTile" parent="." instance=ExtResource( 1 )]
 position = Vector2( 56, 168 )
-buttonPath = NodePath("../Button")
+buttonPath = NodePath("../../Level1-7/Button")
 
 [node name="ToggleTile2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 56, 152 )
-buttonPath = NodePath("../Button")
+buttonPath = NodePath("../../Level1-7/Button")
 
 [node name="BaguetteOven" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 104 )
@@ -111,3 +108,18 @@ margin_top = 40.0
 margin_right = 192.0
 margin_bottom = 72.0
 text = "With space, time and care, baguettes can be very long"
+
+[node name="Exit" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 104 )
+
+[node name="Exit2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 88 )
+
+[node name="Exit3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 72 )
+
+[node name="Exit4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 56 )
+
+[node name="Exit5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 232, 40 )

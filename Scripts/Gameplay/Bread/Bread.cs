@@ -48,7 +48,7 @@ public abstract class Bread : RigidBody2D {
             cachedMask = CollisionMask;
             cachedLayer = CollisionLayer;
             CollisionMask = 0;
-            CollisionLayer = 0;
+            CollisionLayer = 1 << 2;
         }
     }
     public void Tangible() {

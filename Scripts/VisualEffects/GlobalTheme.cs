@@ -47,6 +47,8 @@ public class GlobalTheme : Node {
         if (tween == null) {
             tween = new Tween();
             AddChild(tween);
+        } else {
+            tween.StopAll();
         }
         // Inner wall
         Color startInnerWallColor = (Color) wallShader.GetShaderParam("main_color");
