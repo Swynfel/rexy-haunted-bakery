@@ -88,6 +88,10 @@ retry_t={
  ]
 }
 
+[physics]
+
+2d/default_gravity=300
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

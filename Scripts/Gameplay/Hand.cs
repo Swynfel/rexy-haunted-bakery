@@ -9,7 +9,7 @@ public class Hand : Position2D {
     private bool readyForPlacement;
     private const float readyCooldown = 0.05f;
 
-    Baguette baguette = null;
+    Bread bread = null;
 
     Color placableColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
     Color notPlacableColor = new Color(1.0f, 0.5f, 0.5f, 0.5f);
@@ -19,20 +19,21 @@ public class Hand : Position2D {
         if (NearbyOven != null && Input.IsActionJustPressed("get")) {
             HoldBaguette();
         } else if (holdingBread) {
-            if (!IsInstanceValid(baguette)) {
+            if (!IsInstanceValid(bread)) {
                 holdingBread = false;
                 placingBread = false;
-                baguette = null;
+                bread = null;
                 return;
             }
-            readyForPlacement = baguette.Area.GetOverlappingBodies().Count == 0;
-            baguette.Modulate = placingBread ? Colors.White : readyForPlacement ? placableColor : notPlacableColor;
+            readyForPlacement = !bread.IsAreaOverlapping;
+            bread.Modulate = placingBread ? Colors.White : readyForPlacement ? placableColor : notPlacableColor;
             if (Input.IsActionJustPressed("use") && !placingBread && readyForPlacement) {
                 placingBread = true;
-                baguette.StartGrowth();
+                bread.Place();
             }
             if (Input.IsActionJustReleased("use") && placingBread) {
-                baguette.StopGrowth();
+                GD.Print("Stop place bread");
+                bread.StopPlace();
             }
         }
     }
@@ -56,40 +57,39 @@ public class Hand : Position2D {
 
     public void HoldBaguette() {
         if (holdingBread) {
-            baguette.QueueFree();
+            bread.QueueFree();
         } else {
             holdingBread = true;
         }
-        baguette = Baguette.Instance();
-        GetNode("../../").AddChild(baguette);
-        baguette.Connect(nameof(Baguette.GrowthStoped), this, nameof(ReleaseBaguette));
-        baguette.Intangible();
-        PlaceBaguette();
+        bread = Baguette.Instance();
+        GetNode("../../").AddChild(bread);
+        bread.Connect(nameof(Bread.Placed), this, nameof(Placed));
+        bread.Intangible();
+        RepositionBread();
     }
 
-    private void PlaceBaguette() {
-        if (baguette != null) {
-            baguette.GlobalPosition = GlobalPosition + new Vector2((IsFacingLeft ? -0.5f : +0.5f) * baguette.Length, 0);
+    private void RepositionBread() {
+        if (bread != null) {
+            bread.GlobalPosition = GlobalPosition + bread.OffsetToRexy(IsFacingLeft);
         }
     }
 
     public override void _PhysicsProcess(float delta) {
         base._PhysicsProcess(delta);
-        if (baguette != null && !IsInstanceValid(baguette)) {
+        if (bread != null && !IsInstanceValid(bread)) {
             holdingBread = false;
             placingBread = false;
-            baguette = null;
+            bread = null;
             return;
         }
-        PlaceBaguette();
+        RepositionBread();
     }
 
-    public void ReleaseBaguette() {
+    public void Placed() {
         holdingBread = false;
         placingBread = false;
-        baguette.Disconnect(nameof(Baguette.GrowthStoped), this, nameof(ReleaseBaguette));
-        baguette.Tangible();
-        baguette = null;
-
+        bread.Disconnect(nameof(Baguette.Placed), this, nameof(Placed));
+        bread.Tangible();
+        bread = null;
     }
 }

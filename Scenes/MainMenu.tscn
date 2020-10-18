@@ -14,21 +14,21 @@
 [ext_resource path="res://Scripts/UI/Username.cs" type="Script" id=12]
 [ext_resource path="res://Scripts/UI/FetchToggle.cs" type="Script" id=13]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 2.0
 bg_color = Color( 0.729412, 0.411765, 0.207843, 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=2]
 size = 9
 extra_spacing_top = -4
 font_data = ExtResource( 10 )
 
-[sub_resource type="InputEventAction" id=6]
+[sub_resource type="InputEventAction" id=3]
 action = "ui_cancel"
 pressed = true
 
-[sub_resource type="ShortCut" id=7]
-shortcut = SubResource( 6 )
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "main_to_online"
@@ -121,8 +121,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "start"
+[sub_resource type="Animation" id=6]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
@@ -423,10 +422,10 @@ margin_bottom = 74.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.35
-custom_styles/read_only = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 max_length = 12
 placeholder_text = "Username"
@@ -449,7 +448,7 @@ margin_bottom = 123.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 action_mode = 0
-shortcut = SubResource( 7 )
+shortcut = SubResource( 4 )
 text = "Confirm (escape/enter)"
 script = ExtResource( 7 )
 __meta__ = {
@@ -461,4 +460,4 @@ isReversed = true
 
 [node name="Anim" type="AnimationPlayer" parent="Window"]
 anims/main_to_online = SubResource( 5 )
-anims/start = SubResource( 4 )
+anims/start = SubResource( 6 )
