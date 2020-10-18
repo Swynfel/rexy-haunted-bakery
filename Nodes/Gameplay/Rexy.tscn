@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Sprites/rexy.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Gameplay/Rexy.cs" type="Script" id=2]
 [ext_resource path="res://Scripts/Gameplay/Hand.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Shaders/rexy_platte_material.tres" type="Material" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.5
@@ -353,6 +354,7 @@ CoyoteTime = 0.08
 Push = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4

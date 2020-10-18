@@ -1,6 +1,7 @@
 public enum ChapterId {
     NONE,
     Tutorial,
+    Second,
     TOTAL,
 }
 

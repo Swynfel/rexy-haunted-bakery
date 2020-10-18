@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=36]
+code = "shader_type canvas_item;
+
+uniform vec4 old_color : hint_color;
+uniform vec4 new_color : hint_color;
+
+float neq(vec4 a, vec4 b) {
+    return clamp(100.0 * distance(a, b) - 1.0, 0.0, 1.0);
+}
+
+void fragment(){
+    COLOR = texture(TEXTURE, UV);
+    COLOR = mix(new_color, COLOR, neq(COLOR, old_color));
+}"
+
+[resource]
+shader = SubResource( 36 )
+shader_param/old_color = Color( 0.0352941, 0.411765, 0.0980392, 1 )
+shader_param/new_color = Color( 0.0352941, 0.411765, 0.0980392, 1 )

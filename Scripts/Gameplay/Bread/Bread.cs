@@ -8,6 +8,7 @@ public abstract class Bread : RigidBody2D {
     public enum Id {
         Loaf,
         Baguette,
+        Bagel,
     }
     [Export] NodePath areaPath;
     [Signal] public delegate void Placed();

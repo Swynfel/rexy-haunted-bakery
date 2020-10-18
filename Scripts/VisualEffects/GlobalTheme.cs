@@ -17,6 +17,7 @@ public class GlobalTheme : Node {
     [Export] private float[] flatBoxesBorderColor;
     [Export] private StyleBoxLine[] lines;
     [Export] private float[] lineColor;
+    [Export] private ShaderMaterial rexy;
 
     public override void _Ready() {
         Instance = this;
@@ -64,6 +65,8 @@ public class GlobalTheme : Node {
         // Background
         tween.InterpolateProperty(backgroundShader, "shader_param/main_color", backgroundShader.GetShaderParam("main_color"), palette.backgroundInner, duration);
         tween.InterpolateProperty(backgroundShader, "shader_param/outline_color", backgroundShader.GetShaderParam("outline_color"), palette.backgroundOuter, duration);
+        // Rexy
+        tween.InterpolateProperty(rexy, "shader_param/new_color", rexy.GetShaderParam("new_color"), palette.rexy, duration);
         tween.Start();
     }
 }

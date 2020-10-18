@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/VisualEffects/GlobalTheme.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/magenta_hline.tres" type="StyleBox" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Theme/flat_magenta.tres" type="StyleBox" id=9]
 [ext_resource path="res://Assets/Theme/flat_purple.tres" type="StyleBox" id=10]
 [ext_resource path="res://Assets/Theme/thick_magenta_hline.tres" type="StyleBox" id=11]
+[ext_resource path="res://Assets/Shaders/rexy_platte_material.tres" type="Material" id=12]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.119629, 0, 0.3125, 1, 0.675781, 0, 0.554352, 1 )
@@ -26,3 +27,4 @@ flatBoxesBgColor = PoolRealArray( 1, 1, 0.4, 0, 1, 0, 0 )
 flatBoxesBorderColor = PoolRealArray( 0, 0, 1, 1, 0, 1, 1 )
 lines = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 11 ) ]
 lineColor = PoolRealArray( 1, 1, 1 )
+rexy = ExtResource( 12 )

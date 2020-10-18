@@ -15,7 +15,7 @@
 [ext_resource path="res://Scripts/UI/FetchToggle.cs" type="Script" id=13]
 [ext_resource path="res://Assets/Palettes/base_palette.tres" type="Resource" id=14]
 [ext_resource path="res://Assets/Palettes/tutorial_palette.tres" type="Resource" id=15]
-[ext_resource path="res://Assets/Palettes/dark_palette.tres" type="Resource" id=16]
+[ext_resource path="res://Assets/Palettes/second_palette.tres" type="Resource" id=16]
 [ext_resource path="res://Assets/Palettes/invdark_palette.tres" type="Resource" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -560,23 +560,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
+[node name="Chapter1" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 palette = ExtResource( 15 )
 
-[node name="Button2" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
+[node name="Chapter2" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 54.0
 margin_right = 104.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+chapter = 2
 palette = ExtResource( 16 )
 
-[node name="Button3" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
+[node name="Chapter3" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 108.0
 margin_right = 158.0
 custom_styles/hover = SubResource( 5 )
