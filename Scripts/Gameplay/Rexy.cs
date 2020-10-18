@@ -69,8 +69,8 @@ public class Rexy : KinematicBody2D {
     private void RefreshAnimationConditions() {
         // Running Horizontally
         int x = GetXDirection();
-        bool running_right = x > 0;
-        bool running_left = x < 0;
+        bool running_right = x > +0.1f;
+        bool running_left = x < -0.1f;
         bool running = running_left || running_right;
         if (!Claw.LockDirection) {
             facingAnimation.Set("parameters/conditions/right", running_right);
@@ -122,7 +122,8 @@ public class Rexy : KinematicBody2D {
         for (int collisionIndex = 0 ; collisionIndex < GetSlideCount() ; collisionIndex++) {
             KinematicCollision2D collision = GetSlideCollision(collisionIndex);
             if (collision.Collider is RigidBody2D body) {
-                body.ApplyImpulse(collision.Position - body.Position, collision.Remainder * Push);
+                float dot = collision.Remainder.Dot(collision.Normal);
+                body.ApplyImpulse(collision.Position - body.Position, dot * collision.Normal * Push);
             }
         }
     }

@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Levels/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Gameplay/KillRexyOnTouch.cs" type="Script" id=5]
-[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/Gameplay/Ovens/LoafOven.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Gameplay/ToggleTile.tscn" type="PackedScene" id=9]
@@ -36,9 +36,6 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
 position = Vector2( 448, 216 )
 shape = SubResource( 1 )
-
-[node name="Goal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 552, 88 )
 
 [node name="LoafOven" parent="." instance=ExtResource( 8 )]
 position = Vector2( 152, 112 )
@@ -94,3 +91,18 @@ isOpposite = true
 position = Vector2( 536, 32 )
 buttonPath = NodePath("../PressureButton2")
 isOpposite = true
+
+[node name="Exit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 552, 96 )
+
+[node name="Exit2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 552, 80 )
+
+[node name="Exit3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 552, 64 )
+
+[node name="Exit4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 552, 48 )
+
+[node name="Exit5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 552, 32 )

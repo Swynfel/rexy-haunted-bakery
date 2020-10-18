@@ -111,7 +111,11 @@ locale_filter=[ 0, [  ] ]
 
 [physics]
 
+common/physics_jitter_fix=10.0
+2d/cell_size=8
 2d/default_gravity=300
+2d/default_linear_damp=0.15
+common/enable_object_picking=false
 
 [rendering]
 

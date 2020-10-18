@@ -119,6 +119,8 @@ tracks/6/keys = {
 "Bread",
 ]]
 collision_layer = 3
+collision_mask = 3
+mass = 0.03
 continuous_cd = 2
 contacts_reported = 32
 contact_monitor = true
