@@ -412,7 +412,7 @@ JumpFloatFactor = 0.82
 JumpInteruptFactor = 0.33
 HorizontalSpeed = 75.0
 CoyoteTime = 0.08
-Push = 0.5
+Push = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 4 )

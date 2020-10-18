@@ -122,7 +122,7 @@ public class Rexy : KinematicBody2D {
         for (int collisionIndex = 0 ; collisionIndex < GetSlideCount() ; collisionIndex++) {
             KinematicCollision2D collision = GetSlideCollision(collisionIndex);
             if (collision.Collider is RigidBody2D body) {
-                body.ApplyImpulse(collision.Position - body.Position, -collision.Normal * Push);
+                body.ApplyImpulse(collision.Position - body.Position, collision.Remainder * Push);
             }
         }
     }
