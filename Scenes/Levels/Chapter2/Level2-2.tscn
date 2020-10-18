@@ -4,12 +4,12 @@
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Palettes/second_palette.tres" type="Resource" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/Gameplay/ToggleTile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Nodes/Gameplay/PressureButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/Gameplay/Ovens/BagelOven.tscn" type="PackedScene" id=8]
 
-[node name="Level2-1" type="Node2D"]
+[node name="Level2-2" type="Node2D"]
 script = ExtResource( 2 )
 customPalette = ExtResource( 3 )
 
@@ -29,16 +29,19 @@ position = Vector2( 152, 152 )
 
 [node name="ToggleTile" parent="." instance=ExtResource( 6 )]
 position = Vector2( 152, 72 )
-buttonPath = NodePath("../PressureButton")
+buttonPath = NodePath("../../Level2-2/PressureButton")
 isOpposite = true
 
 [node name="ToggleTile2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 152, 56 )
-buttonPath = NodePath("../PressureButton")
+buttonPath = NodePath("../../Level2-2/PressureButton")
 isOpposite = true
 
 [node name="LoafOven" parent="." instance=ExtResource( 8 )]
 position = Vector2( 112, 72 )
 
-[node name="Goal" parent="." instance=ExtResource( 5 )]
-position = Vector2( 232, 64 )
+[node name="Exit" parent="." instance=ExtResource( 5 )]
+position = Vector2( 232, 72 )
+
+[node name="Exit2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 232, 56 )

@@ -13,6 +13,7 @@ public class Rexy : KinematicBody2D {
     [Export] public float Push = 1f;
     private AnimationTree moveAnimation;
     private AnimationTree facingAnimation;
+    AudioStreamPlayer dieSFK => SoundHandler.Instance.GetNode<AudioStreamPlayer>("DieSFX");
     public Hand Claw;
     private Position2D feet;
     public Vector2 Velocity = new Vector2();
@@ -29,6 +30,11 @@ public class Rexy : KinematicBody2D {
     public bool Jumped = false;
     private float timeSinceLeftFloor;
     private float timeSinceJumped;
+
+    public void Kill() {
+        dieSFK.Play();
+        GetTree().ChangeScene(Global.CurrentScene());
+    }
 
     public int GetXDirection() {
         int x = 0;
