@@ -7,7 +7,7 @@
 [ext_resource path="res://Scripts/UI/ChapterIntro.cs" type="Script" id=5]
 [ext_resource path="res://Assets/Theme/thick_magenta_hline.tres" type="StyleBox" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "hide"
 length = 2.2
 tracks/0/type = "value"
@@ -309,4 +309,4 @@ __meta__ = {
 }
 
 [node name="Anim" type="AnimationPlayer" parent="Window"]
-anims/hide = SubResource( 2 )
+anims/hide = SubResource( 1 )

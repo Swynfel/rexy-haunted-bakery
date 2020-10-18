@@ -138,7 +138,8 @@ margin_top = 88.0
 margin_right = 216.0
 margin_bottom = 120.0
 rect_pivot_offset = Vector2( 32, 40 )
-text = "Once"
+text = "Stays
+down"
 
 [node name="OnceButton" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 136 )
@@ -149,7 +150,8 @@ margin_top = 88.0
 margin_right = 168.0
 margin_bottom = 120.0
 rect_pivot_offset = Vector2( 32, 40 )
-text = "Keep"
+text = "Needs
+Pressure"
 
 [node name="PressureButton" parent="." instance=ExtResource( 8 )]
 position = Vector2( 136, 136 )

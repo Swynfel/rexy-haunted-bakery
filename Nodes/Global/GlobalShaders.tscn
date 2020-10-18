@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Scripts/VisualEffects/PixelCamera.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/VisualEffects/BackgroundShader.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Global/AutoCanvasWindow.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Shaders/outlined_background.shader" type="Shader" id=4]
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Shaders/wall_palette_shader.tres" type="Material" id=6]
+[ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=6]
 [ext_resource path="res://Assets/Shaders/outlined_wall.shader" type="Shader" id=7]
-[ext_resource path="res://Scripts/ScaleToViewport.cs" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 7 )
@@ -33,15 +33,10 @@ __meta__ = {
 
 [node name="Back" type="CanvasLayer" parent="."]
 layer = -10
-script = ExtResource( 8 )
 
 [node name="PurpleScreen" type="ColorRect" parent="Back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = -1.0
-margin_right = -1.0
-margin_bottom = -1.0
 mouse_filter = 2
 color = Color( 0.262745, 0.113725, 0.380392, 1 )
 __meta__ = {
@@ -50,13 +45,14 @@ __meta__ = {
 
 [node name="Box" type="CanvasLayer" parent="."]
 layer = -1
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 
 [node name="BlackScreen" type="ColorRect" parent="Box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,7 +66,6 @@ texture = ExtResource( 5 )
 
 [node name="Wall" type="CanvasLayer" parent="."]
 layer = 2
-script = ExtResource( 8 )
 
 [node name="WallShader" type="ColorRect" parent="Wall"]
 material = SubResource( 1 )
@@ -84,25 +79,9 @@ __meta__ = {
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = 2
-script = ExtResource( 8 )
 
 [node name="BackgroundShader" type="ColorRect" parent="Background"]
 material = SubResource( 2 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FinalPalette" type="CanvasLayer" parent="."]
-layer = 128
-script = ExtResource( 8 )
-
-[node name="PaletteShader" type="ColorRect" parent="FinalPalette"]
-visible = false
-material = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

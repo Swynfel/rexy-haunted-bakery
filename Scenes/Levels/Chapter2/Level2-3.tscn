@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Palettes/second_palette.tres" type="Resource" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/GUI/Instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Nodes/Gameplay/Ovens/BagelOven.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Gameplay/Ghosts/SpikyGhost.tscn" type="PackedScene" id=9]
 
@@ -31,3 +32,13 @@ position = Vector2( 128, 96 )
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
 position = Vector2( 232, 96 )
+
+[node name="Instruction" parent="." instance=ExtResource( 6 )]
+rect_pivot_offset = Vector2( 96, 32 )
+text = "but some have spikes"
+
+[node name="Instruction2" parent="." instance=ExtResource( 6 )]
+margin_top = 16.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 96, 32 )
+text = "All ghosts are kind..."

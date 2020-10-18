@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Scripts/UI/InfoHeader.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Theme/fonts/monumpix.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Scripts/ScaleToViewport.cs" type="Script" id=5]
+[ext_resource path="res://Scripts/Global/AutoCanvasWindow.cs" type="Script" id=5]
 
 [node name="InfoLayer" type="CanvasLayer"]
 pause_mode = 2

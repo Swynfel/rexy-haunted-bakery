@@ -49,7 +49,7 @@ public class Scores : Node {
         Instance = this;
         SilentWolf = GetNode("/root/SilentWolf");
         SWS = (Godot.Object) SilentWolf.Get("Scores");
-        SilentWolf.Call("configure", Utils.Json.DictFromFile("silent_wolf_config.json"));
+        SilentWolf.Call("configure", Utils.Json.DictFromFile("res://silent_wolf_config.json"));
     }
 
     [Signal] public delegate void RefreshChapterScore(ChapterId chapter);
