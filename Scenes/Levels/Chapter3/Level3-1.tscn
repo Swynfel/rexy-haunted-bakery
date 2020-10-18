@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Levels/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Gameplay/KillRexyOnTouch.cs" type="Script" id=5]
-[ext_resource path="res://Nodes/Gameplay/Goal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192, 24 )
@@ -34,5 +34,11 @@ script = ExtResource( 5 )
 position = Vector2( 128, 216 )
 shape = SubResource( 1 )
 
-[node name="Goal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 240, 48 )
+[node name="Exit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240, 56 )
+
+[node name="Exit2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240, 40 )
+
+[node name="Exit3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240, 24 )
