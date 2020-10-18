@@ -57,6 +57,8 @@ public class Rexy : KinematicBody2D {
             timeSinceJumped += delta;
         }
     }
+
+    private bool lastAirborn;
     private void RefreshAnimationConditions() {
         // Running Horizontally
         int x = GetXDirection();
@@ -70,8 +72,13 @@ public class Rexy : KinematicBody2D {
         moveAnimation.Set("parameters/conditions/running", running);
         moveAnimation.Set("parameters/conditions/not-running", !running);
         // On Ground
-        moveAnimation.Set("parameters/conditions/grounded", IsOnGround);
-        moveAnimation.Set("parameters/conditions/airborn", !IsOnGround);
+        bool grounded = IsOnGround && !Jumped;
+        bool airborn = !grounded && (Jumped || Math.Abs(Velocity.y) > 1);
+        moveAnimation.Set("parameters/conditions/grounded", grounded);
+        moveAnimation.Set("parameters/conditions/airborn", airborn);
+        if (lastAirborn != airborn) {
+            lastAirborn = airborn;
+        }
         // Jump / Fall
         bool moving_down = Velocity.y > 0;
         moveAnimation.Set("parameters/airborn/conditions/up", !moving_down);
@@ -83,7 +90,8 @@ public class Rexy : KinematicBody2D {
         if (Input.IsActionJustPressed("jump") && IsOnGround) {
             Velocity.y = -JumpVelocity;
             Jumped = true;
-            timeSinceJumped = 0f;
+            timeSinceJumped = 0;
+            timeSinceLeftFloor = float.PositiveInfinity;
         } else {
             if (Jumped) {
                 if (Input.IsActionJustReleased("jump")) {

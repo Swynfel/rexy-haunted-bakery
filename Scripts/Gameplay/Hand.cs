@@ -8,11 +8,18 @@ public class Hand : Position2D {
     private bool placingBread = false;
     private bool readyForPlacement;
     private const float readyCooldown = 0.05f;
+    AudioStreamPlayer takeSFX;
+    AudioStreamPlayer placeSFX;
 
     Bread bread = null;
 
     Color placableColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
     Color notPlacableColor = new Color(1.0f, 0.5f, 0.5f, 0.5f);
+
+    public override void _Ready() {
+        takeSFX = GetNode<AudioStreamPlayer>("TakeSFX");
+        placeSFX = GetNode<AudioStreamPlayer>("PlaceSFX");
+    }
 
     public override void _Process(float delta) {
         base._Process(delta);
@@ -60,6 +67,7 @@ public class Hand : Position2D {
         } else {
             holdingBread = true;
         }
+        takeSFX.Play();
         bread = Bread.Instance(breadId);
         GetNode("../../").AddChild(bread);
         bread.Connect(nameof(Bread.Placed), this, nameof(Placed));
@@ -87,6 +95,7 @@ public class Hand : Position2D {
     public void Placed() {
         holdingBread = false;
         placingBread = false;
+        placeSFX.Play();
         bread.Disconnect(nameof(Baguette.Placed), this, nameof(Placed));
         bread.Tangible();
         bread = null;

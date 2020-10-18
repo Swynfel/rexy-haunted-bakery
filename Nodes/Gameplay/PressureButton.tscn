@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/interactables.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Gameplay/PressureButton.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Shaders/oven.shader" type="Shader" id=3]
+[ext_resource path="res://Assets/Sounds/SFX/button_released.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/SFX/button_pressed.wav" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.333333, 0.807407, 1 )
@@ -50,3 +52,11 @@ collision_mask = 96
 visible = false
 position = Vector2( 0, 5 )
 shape = SubResource( 6 )
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -8.0
+
+[node name="Released" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -8.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Theme/fonts/peepo-18.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Sounds/SFX/finish.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/UI/ScoreBoard.cs" type="Script" id=5]
 [ext_resource path="res://Scripts/UI/ScoreButtons.cs" type="Script" id=6]
@@ -380,3 +381,8 @@ text = "Continue (space)"
 
 [node name="Anim" type="AnimationPlayer" parent="Window"]
 anims/appear = SubResource( 7 )
+
+[node name="FinishSFX" type="AudioStreamPlayer" parent="Window"]
+stream = ExtResource( 3 )
+volume_db = -8.0
+autoplay = true

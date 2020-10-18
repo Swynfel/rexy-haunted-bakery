@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Assets/Sprites/rexy.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Gameplay/Rexy.cs" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Sounds/SFX/step_a.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/SFX/step_b.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sounds/SFX/pick.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/SFX/place.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.5
@@ -417,15 +418,20 @@ material = ExtResource( 4 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 8
+frame = 1
 
 [node name="Hand" type="Position2D" parent="."]
 visible = false
 position = Vector2( 6, 1 )
 script = ExtResource( 3 )
 
-[node name="Pick" type="AudioStreamPlayer" parent="Hand"]
+[node name="TakeSFX" type="AudioStreamPlayer" parent="Hand"]
 stream = ExtResource( 8 )
+volume_db = -5.0
+
+[node name="PlaceSFX" type="AudioStreamPlayer" parent="Hand"]
+stream = ExtResource( 9 )
+volume_db = -5.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
 visible = false

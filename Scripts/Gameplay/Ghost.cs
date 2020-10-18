@@ -7,24 +7,31 @@ public class Ghost : Area2D {
     [Export] float speed;
     [Export] float timeDecay = 0.5f;
     float reactingTime;
+    AudioStreamPlayer eatSFX;
 
-    // public override void _Ready() {
-
-    // }
+    public override void _Ready() {
+        eatSFX = GetNode<AudioStreamPlayer>("EatAudio");
+    }
 
     Vector2 Velocity;
     Bread target;
 
     public override void _PhysicsProcess(float delta) {
+        bool breadWasEaten = false;
         foreach (Node node in GetOverlappingBodies()) {
             if (node is Bread breadBody) {
                 breadBody.QueueFree();
+                breadWasEaten = true;
             }
         }
         foreach (Node node in GetOverlappingAreas()) {
             if (node is Bread breadBody) {
                 breadBody.QueueFree();
+                breadWasEaten = true;
             }
+        }
+        if (breadWasEaten) {
+            eatSFX.Play();
         }
         FindTargetBread();
         if (target != null) {
