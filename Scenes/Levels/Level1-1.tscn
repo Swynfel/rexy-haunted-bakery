@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sprites/instructions_move.png" type="Texture" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Palettes/invdark_palette.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/Palettes/tutorial_palette.tres" type="Resource" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )

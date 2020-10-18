@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
@@ -14,25 +14,117 @@
 [ext_resource path="res://Scripts/UI/Username.cs" type="Script" id=12]
 [ext_resource path="res://Scripts/UI/FetchToggle.cs" type="Script" id=13]
 [ext_resource path="res://Assets/Palettes/base_palette.tres" type="Resource" id=14]
+[ext_resource path="res://Assets/Palettes/tutorial_palette.tres" type="Resource" id=15]
+[ext_resource path="res://Assets/Palettes/dark_palette.tres" type="Resource" id=16]
+[ext_resource path="res://Assets/Palettes/invdark_palette.tres" type="Resource" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.282353, 0.12549, 0.396078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.262745, 0.113725, 0.380392, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.282353, 0.12549, 0.396078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.262745, 0.113725, 0.380392, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.282353, 0.12549, 0.396078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=6]
+resource_local_to_scene = true
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.262745, 0.113725, 0.380392, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.4, 0.109804, 0.513726, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 content_margin_left = 2.0
 bg_color = Color( 0.729412, 0.411765, 0.207843, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
 size = 9
 extra_spacing_top = -4
 font_data = ExtResource( 10 )
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=9]
 action = "ui_cancel"
 pressed = true
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "main_to_online"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/TitlePosition:position")
 tracks/0/interp = 1
@@ -122,7 +214,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
@@ -235,8 +327,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "start-quick"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
 tracks/0/interp = 1
@@ -470,14 +561,29 @@ __meta__ = {
 }
 
 [node name="Button" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+palette = ExtResource( 15 )
 
 [node name="Button2" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 54.0
 margin_right = 104.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+palette = ExtResource( 16 )
 
 [node name="Button3" parent="Window/PanelContainer/Body/MainMenu/Levels" instance=ExtResource( 9 )]
 margin_left = 108.0
 margin_right = 158.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+palette = ExtResource( 17 )
 
 [node name="Quit" type="Button" parent="Window/PanelContainer/Body/MainMenu"]
 margin_top = 56.0
@@ -536,10 +642,10 @@ margin_bottom = 74.0
 rect_min_size = Vector2( 0, 13 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.35
-custom_styles/read_only = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/read_only = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 align = 1
 max_length = 12
 placeholder_text = "Username"
@@ -562,7 +668,7 @@ margin_bottom = 123.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 action_mode = 0
-shortcut = SubResource( 4 )
+shortcut = SubResource( 10 )
 text = "Confirm (escape/enter)"
 script = ExtResource( 7 )
 __meta__ = {
@@ -573,6 +679,6 @@ animation = "main_to_online"
 isReversed = true
 
 [node name="Anim" type="AnimationPlayer" parent="Window"]
-anims/main_to_online = SubResource( 5 )
-anims/start = SubResource( 6 )
-anims/start-quick = SubResource( 7 )
+anims/main_to_online = SubResource( 11 )
+anims/start = SubResource( 12 )
+anims/start-quick = SubResource( 13 )

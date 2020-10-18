@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/VisualEffects/Palette.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+wallInner = Color( 0.188235, 0.129412, 0.376471, 1 )
+wallOuter = Color( 0.356863, 0.227451, 0.494118, 1 )
+backgroundOuter = Color( 0.627451, 0.403922, 0.219608, 1 )
+backgroundInner = Color( 0.807843, 0.607843, 0.34902, 1 )
