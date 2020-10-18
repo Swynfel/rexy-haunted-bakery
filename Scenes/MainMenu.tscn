@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
@@ -235,6 +235,119 @@ tracks/8/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "start-quick"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer/Body/MainMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PanelContainer/Body/OnlineOptions:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PanelContainer/TitlePosition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 48 ), Vector2( 128, 48 ), Vector2( 128, 24 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PanelContainer/TitlePosition:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PanelContainer/TitlePosition/Title/Text:bbcode_text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]", "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PanelContainer/Body/MainMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PanelContainer/Body/MainMenu:rect_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 158, 72 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PanelContainer/Body/MainMenu:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 49, 44 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("PanelContainer/Body/MainMenu/Online")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+
 [node name="MainMenuLayer" type="CanvasLayer"]
 pause_mode = 2
 layer = 120
@@ -271,14 +384,14 @@ __meta__ = {
 }
 
 [node name="TitlePosition" type="Position2D" parent="Window/PanelContainer"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 128, 72 )
+position = Vector2( 128, 24 )
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
 Path = NodePath("../../Anim")
 Animation = "start"
+OtherAnimation = "start-quick"
 
 [node name="Title" type="Control" parent="Window/PanelContainer/TitlePosition"]
 anchor_top = 0.35
@@ -306,7 +419,7 @@ margin_top = 0.299999
 margin_bottom = 0.999996
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center][color=green]Rexy[/color]'s [wave amp=0 freq=4]Haunted[/wave] Bakery[/center]"
+bbcode_text = "[center][color=green]Rexy[/color]'s [wave amp=30 freq=4]Haunted[/wave] Bakery[/center]"
 text = "Rexy's Haunted Bakery"
 scroll_active = false
 __meta__ = {
@@ -322,7 +435,6 @@ __meta__ = {
 }
 
 [node name="MainMenu" type="VBoxContainer" parent="Window/PanelContainer/Body"]
-visible = false
 margin_left = 49.0
 margin_top = 44.0
 margin_right = 207.0
@@ -463,3 +575,4 @@ isReversed = true
 [node name="Anim" type="AnimationPlayer" parent="Window"]
 anims/main_to_online = SubResource( 5 )
 anims/start = SubResource( 6 )
+anims/start-quick = SubResource( 7 )
