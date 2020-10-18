@@ -2,6 +2,7 @@ using System;
 using Godot;
 
 public class Level : Node2D {
+    [Export] Palette customPalette;
     private bool postInit = false;
     private bool ready = true;
     public override void _Ready() {
@@ -9,6 +10,9 @@ public class Level : Node2D {
             DisplayDebugLevel();
         }
         postInit = true;
+        if (customPalette != null) {
+            GlobalTheme.Instance.ChangePalette(customPalette);
+        }
     }
     private void DisplayDebugLevel() {
         string[] parts = Name.Substring("Level".Length).Split('-');

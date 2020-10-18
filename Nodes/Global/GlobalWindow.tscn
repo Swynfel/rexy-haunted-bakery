@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Global/GlobalWindow.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/VisualEffects/BackgroundShader.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/VisualEffects/PixelCamera.cs" type="Script" id=5]
 [ext_resource path="res://Assets/Shaders/outlined_wall.shader" type="Shader" id=6]
+[ext_resource path="res://Assets/Shaders/wall_palette_shader.tres" type="Material" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -83,6 +84,21 @@ layer = 2
 
 [node name="BackgroundShader" type="ColorRect" parent="Background"]
 material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+GlobalScalePath = NodePath("../..")
+
+[node name="FinalPalette" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="PaletteShader" type="ColorRect" parent="FinalPalette"]
+visible = false
+material = ExtResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

@@ -2,11 +2,13 @@ using System;
 using Godot;
 
 public class InfoHeader : HBoxContainer {
+    public static ColorRect Background;
     Label levelLabel;
     Label timeLabel;
     public override void _Ready() {
         timeLabel = GetNode<Label>("Time");
         levelLabel = GetNode<Label>("Level");
+        Background = GetNode<ColorRect>("../Background");
     }
 
     private void UpdateLabel() {

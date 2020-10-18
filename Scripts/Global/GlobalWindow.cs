@@ -10,17 +10,13 @@ public class GlobalWindow : Container {
     private int oldScale = -1;
     public override void _Ready() {
         Instance = this;
+        OS.SetWindowTitle("Rexy's Haunted Bakery");
     }
     public override void _Notification(int notification) {
         if (notification == NotificationSortChildren || notification == NotificationDraw) {
             ScreenResized();
         }
     }
-
-    // public override void _Process(float delta) {
-    //     base._Process(delta);
-    //     ScreenResized();
-    // }
 
     public int Scale;
     public Vector2 Offset;

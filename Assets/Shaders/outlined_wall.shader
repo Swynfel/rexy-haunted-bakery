@@ -35,6 +35,8 @@ void fragment(){
         * is_wall(textureLod(SCREEN_TEXTURE, clamp(SCREEN_UV + vec2(0, -size_y), 0.0, 1.0), 0.0))
         * is_wall(textureLod(SCREEN_TEXTURE, clamp(SCREEN_UV + vec2(size_x, 0), 0.0, 1.0), 0.0))
         * is_wall(textureLod(SCREEN_TEXTURE, clamp(SCREEN_UV + vec2(-size_x, 0), 0.0, 1.0), 0.0));
+    // vec4 wall_color = mix(escaped_outline_color, escaped_wall_color, has_only_walls_around);
+    // COLOR = mix(wall_color, COLOR, neq(COLOR, escaped_wall_color));
     vec4 wall_color = mix(outline_color, main_color, has_only_walls_around);
     COLOR = mix(wall_color, COLOR, neq(COLOR, escaped_wall_color));
 }

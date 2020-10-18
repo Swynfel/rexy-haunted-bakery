@@ -1,0 +1,28 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/VisualEffects/GlobalTheme.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Theme/magenta_hline.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/Theme/outlined_purple.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Theme/magenta_border.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Theme/hovered_outlined_purple.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/Theme/flat_margined_magenta.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/Theme/magenta_vline.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/Theme/outlined_magenta.tres" type="StyleBox" id=8]
+[ext_resource path="res://Assets/Theme/flat_magenta.tres" type="StyleBox" id=9]
+[ext_resource path="res://Assets/Theme/flat_purple.tres" type="StyleBox" id=10]
+[ext_resource path="res://Assets/Theme/thick_magenta_hline.tres" type="StyleBox" id=11]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.119629, 0, 0.3125, 1, 0.675781, 0, 0.554352, 1 )
+
+[node name="GlobalTheme" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+wallPath = "Wall/WallShader"
+backgroundPath = "Background/BackgroundShader"
+gradient = SubResource( 1 )
+flatBoxes = [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 10 ) ]
+flatBoxesBgColor = PoolRealArray( 1, 1, 0.4, 0, 1, 0, 0 )
+flatBoxesBorderColor = PoolRealArray( 0, 0, 1, 1, 0, 1, 1 )
+lines = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 11 ) ]
+lineColor = PoolRealArray( 1, 1, 1 )

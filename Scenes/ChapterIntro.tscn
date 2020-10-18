@@ -5,12 +5,7 @@
 [ext_resource path="res://Assets/Theme/fonts/monumpix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Theme/fonts/peepo-18.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/UI/ChapterIntro.cs" type="Script" id=5]
-
-[sub_resource type="StyleBoxLine" id=1]
-color = Color( 0.4, 0.109804, 0.513726, 1 )
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 4
+[ext_resource path="res://Assets/Theme/thick_magenta_hline.tres" type="StyleBox" id=6]
 
 [sub_resource type="Animation" id=2]
 resource_name = "hide"
@@ -295,7 +290,7 @@ margin_left = -128.0
 margin_top = 96.0
 margin_right = 128.0
 margin_bottom = 100.0
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

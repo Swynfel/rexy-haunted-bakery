@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Global/AutoWindow.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/global_theme.tres" type="Theme" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scripts/VisualEffects/AutoAnimOnlyAtStart.cs" type="Script" id=11]
 [ext_resource path="res://Scripts/UI/Username.cs" type="Script" id=12]
 [ext_resource path="res://Scripts/UI/FetchToggle.cs" type="Script" id=13]
+[ext_resource path="res://Assets/Palettes/base_palette.tres" type="Resource" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 2.0
@@ -238,6 +239,7 @@ tracks/8/keys = {
 pause_mode = 2
 layer = 120
 script = ExtResource( 6 )
+basePalette = ExtResource( 14 )
 
 [node name="Window" type="Control" parent="."]
 anchor_right = 1.0

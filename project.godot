@@ -16,7 +16,10 @@ _global_script_class_icons={
 [application]
 
 config/name="RexyHauntedBakery"
+config/description="Puzzle Plateformer for the Godot Wild Jam 26"
 run/main_scene="res://Scenes/MainMenu.tscn"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.262745, 0.113725, 0.380392, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -25,6 +28,7 @@ Global="*res://Nodes/Global/Global.tscn"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Scores="*res://Nodes/Global/Scores.tscn"
 GlobalWindow="*res://Nodes/Global/GlobalWindow.tscn"
+GlobalTheme="*res://Nodes/Global/GlobalTheme.tscn"
 Gui="*res://Nodes/GUI/GUI.tscn"
 CheatCode="*res://Scripts/Global/CheatCode.cs"
 GlobalTimer="*res://Nodes/Global/InfoHeader.tscn"
@@ -95,6 +99,11 @@ retry_t={
 2d_physics/layer_5="Interactable"
 2d_physics/layer_6="Rexy"
 2d_physics/layer_7="Heavy"
+
+[locale]
+
+translations=PoolStringArray(  )
+locale_filter=[ 0, [  ] ]
 
 [physics]
 

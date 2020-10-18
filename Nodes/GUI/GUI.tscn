@@ -221,9 +221,10 @@ __meta__ = {
 }
 
 [node name="Filter" type="ColorRect" parent="Window"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.713726, 0.713726, 0.713726, 0 )
+color = Color( 0.713726, 0.713726, 0.713726, 0.247059 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -238,7 +239,6 @@ __meta__ = {
 }
 
 [node name="Paused" type="Control" parent="Window/Container"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -252,7 +252,7 @@ menuButtonPath = NodePath("../../Container/Paused/List/Menu")
 anchor_left = 0.25
 anchor_top = 0.15
 anchor_right = 0.75
-anchor_bottom = 2.5
+anchor_bottom = 0.85
 mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 1
@@ -261,10 +261,11 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Window/Container/Paused/List"]
+use_parent_material = true
 margin_left = 45.0
-margin_top = 171.0
+margin_top = 22.0
 margin_right = 83.0
-margin_bottom = 184.0
+margin_bottom = 35.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.262745, 0.113725, 0.380392, 1 )
@@ -272,9 +273,9 @@ text = "Paused"
 align = 1
 
 [node name="Resume" type="Button" parent="Window/Container/Paused/List"]
-margin_top = 188.0
+margin_top = 39.0
 margin_right = 128.0
-margin_bottom = 203.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
@@ -283,9 +284,9 @@ shortcut = SubResource( 3 )
 text = "Resume (escape)"
 
 [node name="RetryLevel" type="Button" parent="Window/Container/Paused/List"]
-margin_top = 207.0
+margin_top = 58.0
 margin_right = 128.0
-margin_bottom = 222.0
+margin_bottom = 73.0
 rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
@@ -294,9 +295,9 @@ shortcut = SubResource( 5 )
 text = "Retry Level (R)"
 
 [node name="RetryChapter" type="Button" parent="Window/Container/Paused/List"]
-margin_top = 226.0
+margin_top = 77.0
 margin_right = 128.0
-margin_bottom = 241.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false
@@ -306,6 +307,7 @@ text = "Retry Chapter (T)"
 
 [node name="Online" type="Button" parent="Window/Container/Paused/List"]
 visible = false
+use_parent_material = true
 margin_top = 245.0
 margin_right = 128.0
 margin_bottom = 260.0
@@ -316,9 +318,9 @@ action_mode = 0
 text = "Online Options"
 
 [node name="Menu" type="Button" parent="Window/Container/Paused/List"]
-margin_top = 264.0
+margin_top = 96.0
 margin_right = 128.0
-margin_bottom = 279.0
+margin_bottom = 111.0
 rect_min_size = Vector2( 0, 15 )
 size_flags_horizontal = 5
 shortcut_in_tooltip = false

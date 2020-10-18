@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Sprites/tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Level/Level.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/instructions_move.png" type="Texture" id=3]
 [ext_resource path="res://Nodes/Gameplay/Rexy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Gameplay/Exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Palettes/invdark_palette.tres" type="Resource" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -72,6 +73,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [node name="Level1-1" type="Node2D"]
 script = ExtResource( 2 )
+customPalette = ExtResource( 6 )
 
 [node name="Platforms" type="TileMap" parent="."]
 show_behind_parent = true
