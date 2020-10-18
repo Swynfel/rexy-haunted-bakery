@@ -24,6 +24,7 @@ public class Rexy : KinematicBody2D {
         feet = GetNode<Position2D>("Feet");
         moveAnimation.Active = true;
         facingAnimation.Active = true;
+        PixelCamera.Instance.Rexy = this;
     }
 
     public bool IsOnGround => !Jumped && timeSinceLeftFloor <= CoyoteTime;

@@ -36,12 +36,12 @@ public class GlobalWindow : Container {
 
         Rectangle = new Rect2(Vector2.Zero, size);
 
-        foreach (Node _child in GetChildren()) {
-            if (_child is Control child) {
-                FitChildInRect(child, Rectangle);
-                // child.RectScale = new Vector2(1f, 1f);
-            }
-        }
+        // foreach (Node _child in GetChildren()) {
+        //     if (_child is Control child) {
+        //         FitChildInRect(child, Rectangle);
+        //         // child.RectScale = new Vector2(1f, 1f);
+        //     }
+        // }
 
         if (oldScale != Scale) {
             oldScale = Scale;

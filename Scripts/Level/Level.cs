@@ -3,6 +3,7 @@ using Godot;
 
 public class Level : Node2D {
     [Export] Palette customPalette;
+    [Export] Vector2 maxDimensions;
     private bool postInit = false;
     private bool ready = true;
     public override void _Ready() {
@@ -13,6 +14,8 @@ public class Level : Node2D {
         if (customPalette != null) {
             GlobalTheme.Instance.ChangePalette(customPalette);
         }
+        PixelCamera.Instance.MaxX = maxDimensions.x;
+        PixelCamera.Instance.MaxY = maxDimensions.y;
     }
     private void DisplayDebugLevel() {
         string[] parts = Name.Substring("Level".Length).Split('-');

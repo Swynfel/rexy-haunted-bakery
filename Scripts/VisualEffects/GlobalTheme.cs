@@ -21,9 +21,9 @@ public class GlobalTheme : Node {
 
     public override void _Ready() {
         Instance = this;
-        wallShader = (ShaderMaterial) GlobalWindow.Instance.GetNode<CanvasItem>(wallPath).Material;
+        wallShader = (ShaderMaterial) GetNode<CanvasItem>($"/root/GlobalShaders/{wallPath}").Material;
         // wallPaletteShader = (ShaderMaterial) GlobalWindow.Instance.GetNode<CanvasItem>(wallPalettePath).Material;
-        backgroundShader = (ShaderMaterial) GlobalWindow.Instance.GetNode<CanvasItem>(backgroundPath).Material;
+        backgroundShader = (ShaderMaterial) GlobalWindow.Instance.GetNode<CanvasItem>($"/root/GlobalShaders/{backgroundPath}").Material;
     }
     public void SetBg(Color bg) {
         gradient.SetColor(0, bg);

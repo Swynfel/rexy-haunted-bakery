@@ -26,9 +26,10 @@ config/windows_native_icon="res://icon.ico"
 [autoload]
 
 Global="*res://Nodes/Global/Global.tscn"
+GlobalWindow="*res://Nodes/Global/GlobalWindow.tscn"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Scores="*res://Nodes/Global/Scores.tscn"
-GlobalWindow="*res://Nodes/Global/GlobalWindow.tscn"
+GlobalShaders="*res://Nodes/Global/GlobalShaders.tscn"
 GlobalTheme="*res://Nodes/Global/GlobalTheme.tscn"
 Gui="*res://Nodes/GUI/GUI.tscn"
 CheatCode="*res://Scripts/Global/CheatCode.cs"
