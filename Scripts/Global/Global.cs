@@ -16,9 +16,10 @@ public class Global : Node {
     }
     private static string Scene(ChapterId chapter, int level) {
         if (chapter >= ChapterId.TOTAL) {
-            return $"res://Scenes/Levels/Level1-1.tscn"; // TODO: Menu
+            return $"res://Scenes/MainMenu.tscn";
         }
-        return $"res://Scenes/Levels/Level{(int) (chapter)}-{level}.tscn"; // TODO: First Chapter
+        int chap = (int) (chapter);
+        return $"res://Scenes/Levels/Chapter{chap}/Level{chap}-{level}.tscn";
     }
     public static string CurrentScene() {
         return Scene(Chapter, Level);
