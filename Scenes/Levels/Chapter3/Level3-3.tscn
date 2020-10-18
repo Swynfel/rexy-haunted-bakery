@@ -43,9 +43,6 @@ position = Vector2( 544, 112 )
 [node name="PressureButton" parent="." instance=ExtResource( 7 )]
 position = Vector2( 144, 96 )
 
-[node name="PressureButton2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 488, 160 )
-
 [node name="ToggleTile" parent="." instance=ExtResource( 9 )]
 position = Vector2( 80, 96 )
 buttonPath = NodePath("../../Level3-3/PressureButton")
